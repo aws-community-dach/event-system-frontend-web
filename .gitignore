@@ -30,6 +30,8 @@ jspm_packages/
 *.tgz
 .yarn-integrity
 .cache
+.env.local
+.vscode
 !/.projenrc.js
 !/.github/workflows/build.yml
 !/.github/workflows/upgrade.yml
@@ -37,7 +39,7 @@ jspm_packages/
 !/test/
 !/tsconfig.json
 !/tsconfig.dev.json
-!/src/
+!/./
 /lib
 /dist/
 !/tailwind.config.json
