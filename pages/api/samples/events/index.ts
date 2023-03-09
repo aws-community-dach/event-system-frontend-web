@@ -6,7 +6,7 @@ import type { EventType } from '@/types/EventType';
 type ResponseType = EventType[];
 
 export default function handler(
-  req: NextApiRequest,
+  _req: NextApiRequest,
   res: NextApiResponse<ResponseType>
 ) {
   res.status(200).json(eventList);
