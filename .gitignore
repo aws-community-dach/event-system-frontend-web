@@ -42,6 +42,7 @@ jspm_packages/
 !/./
 /lib
 /dist/
+!/.eslintrc.json
 !/tailwind.config.json
 !/postcss.config.json
 /.next/
