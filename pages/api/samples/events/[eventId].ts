@@ -2,10 +2,8 @@
 import type { NextApiResponse, NextApiRequest } from 'next';
 import { eventList } from '@/data/event';
 import type { EventType } from '@/types/EventType';
+import { NotFoundError } from '@/types/ResponseTypes';
 
-type NotFoundError = {
-  message: string;
-};
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<EventType | NotFoundError>
