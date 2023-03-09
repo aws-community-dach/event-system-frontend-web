@@ -14,6 +14,9 @@ const project = new web.NextJsTypeScriptProject({
   gitignore: ['.env.local', '.vscode'],
   deps: ['swr', '@next/font', 'next-auth'],
   eslint: true,
+  eslintOptions: {
+    prettier: true,
+  },
   tsconfig: {
     compilerOptions: {
       rootDir: '.',
