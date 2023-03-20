@@ -1,3 +1,4 @@
+import EventForm from '@/components/EventsForm';
 import { EventType } from '@/types/EventType';
 
 async function getData(eventId: string) {
@@ -17,5 +18,5 @@ export default async function Page({
   params: { eventId: string };
 }) {
   const event: EventType = await getData(params.eventId);
-  return <div>{JSON.stringify(event)}</div>;
+  return <EventForm eventId={event.id} />;
 }
