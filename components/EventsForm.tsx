@@ -1,14 +1,12 @@
 'use client';
 
-import { ParticipantFormElementsType } from '@/types/ParticipantType';
+import { ParticipantFormType } from '@/types/ParticipantType';
 
 export default function EventForm({ eventId }: { eventId: number }) {
-  const handleSubmit = async (
-    event: React.FormEvent<ParticipantFormElementsType>
-  ) => {
+  const handleSubmit = async (event: React.FormEvent<ParticipantFormType>) => {
     event.preventDefault();
 
-    const target = event.currentTarget;
+    const target = event.currentTarget.elements;
 
     const data = {
       name: target.name.value,
@@ -39,13 +37,13 @@ export default function EventForm({ eventId }: { eventId: number }) {
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor='participant-name'>Name:</label>
-      <input type='text' id='participant-name' name='name' required />
+      <input type='text' id='participant-name' required />
 
       <label htmlFor='displayName'>Display Name:</label>
-      <input type='text' id='displayName' name='displayName' required />
+      <input type='text' id='displayName' required />
 
       <label htmlFor='email'>Email:</label>
-      <input type='email' id='email' name='email' required />
+      <input type='email' id='email' required />
 
       <button type='submit'>Submit</button>
     </form>
