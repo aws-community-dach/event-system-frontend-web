@@ -12,7 +12,7 @@ const project = new web.NextJsTypeScriptProject({
     // projenCredentials: GithubCredentials.fromApp(),
   },
   gitignore: ['.env.local', '.vscode'],
-  deps: ['swr', '@next/font', 'next-auth'],
+  deps: ['swr', '@next/font', 'next-auth', 'axios'],
   eslint: true,
   eslintOptions: {
     prettier: true,
