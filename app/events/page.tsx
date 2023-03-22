@@ -1,15 +1,13 @@
-import { EventType } from "@/types/EventType";
+import { EventService } from '@/service/events/EventService';
+import { EventType } from '@/types/EventType';
 
 async function getData() {
-    const res = await fetch(`http://localhost:3000/api/samples/events`);
-    if (!res.ok) {
-        throw new Error("Failed to fetch data");
-    }
+  const res = await EventService.getAll();
 
-    return res.json();
+  return res.data;
 }
 
 export default async function Page() {
-    const event: EventType[] = await getData();
-    return <div>{JSON.stringify(event)}</div>;
+  const event: EventType[] = await getData();
+  return <div>{JSON.stringify(event)}</div>;
 }
