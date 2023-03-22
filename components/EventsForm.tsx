@@ -15,7 +15,7 @@ export default function EventForm({ eventId }: { eventId: string }) {
       email: target.email.value,
     };
 
-    ParticipantService.add(eventId, data);
+    ParticipantService(eventId).add(data);
   };
 
   return (
