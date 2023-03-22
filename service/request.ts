@@ -3,7 +3,12 @@ import axios, { AxiosError, AxiosResponse } from 'axios';
 const client = axios.create({ baseURL: process.env.NEXT_PUBLIC_API_BASE_URL });
 
 const request = async ({ ...options }) => {
-  //client.defaults.withCredentials = true;
+  let withCredentials = false;
+
+  if (process.env.NEXT_PUBLIC_APP_ENV === 'production') {
+    withCredentials = true;
+  }
+  client.defaults.withCredentials = withCredentials;
   const onSuccess = (response: AxiosResponse) => response;
 
   const onError = (error: AxiosError) => {
