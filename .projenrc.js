@@ -17,6 +17,7 @@ const project = new web.NextJsTypeScriptProject({
   eslintOptions: {
     prettier: true,
   },
+  workflowNodeVersion: "16.8.0",
   tsconfig: {
     compilerOptions: {
       rootDir: '.',
