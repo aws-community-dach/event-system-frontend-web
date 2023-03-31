@@ -15,7 +15,7 @@ const project = new web.NextJsTypeScriptProject({
   deps: ['swr', '@next/font', 'next-auth', 'axios'],
   eslint: true,
   eslintOptions: {
-    prettier: true,
+    prettier: false,
   },
   workflowNodeVersion: "16.8.0",
   tsconfig: {

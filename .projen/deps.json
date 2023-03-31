@@ -24,10 +24,6 @@
       "type": "build"
     },
     {
-      "name": "eslint-config-prettier",
-      "type": "build"
-    },
-    {
       "name": "eslint-import-resolver-node",
       "type": "build"
     },
@@ -40,10 +36,6 @@
       "type": "build"
     },
     {
-      "name": "eslint-plugin-prettier",
-      "type": "build"
-    },
-    {
       "name": "eslint",
       "version": "^8",
       "type": "build"
@@ -51,10 +43,6 @@
     {
       "name": "npm-check-updates",
       "version": "^16",
-      "type": "build"
-    },
-    {
-      "name": "prettier",
       "type": "build"
     },
     {
