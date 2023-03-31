@@ -1,6 +1,5 @@
-import NextAuth from 'next-auth';
+import NextAuth, { NextAuthOptions } from 'next-auth';
 import CognitoProvider from 'next-auth/providers/cognito';
-import { NextAuthOptions } from 'next-auth';
 
 export const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
