@@ -4,7 +4,7 @@ import { ParticipantService } from '@/service/events/ParticipantService';
 import { ParticipantFormType } from '@/types/ParticipantType';
 
 export default function EventForm({ eventId }: { eventId: string }) {
-  const handleSubmit = async (event: React.FormEvent<ParticipantFormType>) => {
+  const handleSubmit = (event: React.FormEvent<ParticipantFormType>) => {
     event.preventDefault();
 
     const target = event.currentTarget.elements;
@@ -15,7 +15,7 @@ export default function EventForm({ eventId }: { eventId: string }) {
       email: target.email.value,
     };
 
-    ParticipantService(eventId).add(data);
+    void ParticipantService(eventId).add(data);
   };
 
   return (
