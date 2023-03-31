@@ -5,21 +5,38 @@ const { NpmAccess, NodePackageManager } = require('projen/lib/javascript');
 const project = new web.NextJsTypeScriptProject({
   defaultReleaseBranch: 'main',
   name: 'event-system-frontend-web',
-  srcdir: 'src',
+  srcdir: '.',
   packageManager: NodePackageManager.NPM,
   githubOptions: {
     mergify: false,
     // projenCredentials: GithubCredentials.fromApp(),
   },
-  deps: [
-    'swr',
-    '@next/font',
-  ],
+  gitignore: ['.env.local', '.vscode'],
+  deps: ['swr', '@next/font', 'next-auth', 'axios'],
+  eslint: true,
+  eslintOptions: {
+    prettier: false,
+  },
+  workflowNodeVersion: '16.8.0',
+  tsconfig: {
+    compilerOptions: {
+      rootDir: '.',
+      outDir: '.',
+      baseUrl: '.',
+      paths: {
+        '@/*': ['./*'],
+      },
+      plugins: [
+        {
+          name: 'next',
+        },
+      ],
+    },
+    include: ['**/*.tsx', '.next/types/**/*.ts'],
+  },
 });
 project.tryFindFile('tailwind.config.json').obj = {
-  content: [
-    './src/**/*.{js,ts,jsx,tsx}',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {},
   },
