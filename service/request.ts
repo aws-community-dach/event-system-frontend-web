@@ -12,7 +12,6 @@ const request = async ({ ...options }) => {
   const onSuccess = (response: AxiosResponse) => response;
 
   const onError = (error: AxiosError) => {
-    console.log(error.message);
     return Promise.reject(error.response);
   };
 
