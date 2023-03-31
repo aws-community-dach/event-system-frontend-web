@@ -12,7 +12,15 @@ const request = async ({ ...options }) => {
   const onSuccess = (response: AxiosResponse) => response;
 
   const onError = (error: AxiosError) => {
-    return Promise.reject(error.response);
+    if (error.code === 'ECONNREFUSED') {
+      return {
+        customError: true,
+        message: 'Connection refused. Please ensure the server is running.',
+        status: 500,
+        data: null,
+      };
+    }
+    throw error;
   };
 
   return client(options).then(onSuccess).catch(onError);
