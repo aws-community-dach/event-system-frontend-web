@@ -1,5 +1,5 @@
-import { BaseService } from '../BaseService';
 import { EventEndpoint } from './EventService';
+import { BaseService } from '../BaseService';
 
 const participantEndpoint = 'participants';
 
