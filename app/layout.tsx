@@ -1,3 +1,4 @@
+import Footer from './Footer';
 import './globals.css';
 import Nav from './Nav';
 
@@ -17,6 +18,7 @@ export default function RootLayout({
         {/* @ts-expect-error Server Component */}
         <Nav />
         {children}
+        <Footer />
       </body>
     </html>
   );
