@@ -2,7 +2,6 @@
 import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import Authenticated from './auth/Authenticated';
 import SignIn from './auth/SignIn';
 
 import { Session } from 'next-auth';
@@ -21,12 +20,6 @@ const navigation = [
   { name: 'Projects', href: '#', current: false },
   { name: 'Calendar', href: '#', current: false },
   { name: 'Reports', href: '#', current: false },
-];
-
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
 ];
 
 function classNames(...classes: string[]) {
@@ -147,23 +140,6 @@ export default function Nav({ session }: { session: Session | null }) {
                   {item.name}
                 </Disclosure.Button>
               ))}
-            </div>
-            <div className='border-t border-gray-700 pb-3 pt-4'>
-              <div className='flex items-center px-5'>
-                {session?.user && <Authenticated />}
-              </div>
-              <div className='mt-3 space-y-1 px-2'>
-                {userNavigation.map((item) => (
-                  <Disclosure.Button
-                    key={item.name}
-                    as='a'
-                    href={item.href}
-                    className='block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white'
-                  >
-                    {item.name}
-                  </Disclosure.Button>
-                ))}
-              </div>
             </div>
           </Disclosure.Panel>
         </>
