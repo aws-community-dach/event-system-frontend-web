@@ -28,7 +28,7 @@
     "target": "es5",
     "moduleResolution": "node",
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "allowJs": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,

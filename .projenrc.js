@@ -22,6 +22,7 @@ const project = new web.NextJsTypeScriptProject({
     compilerOptions: {
       rootDir: '.',
       outDir: '.',
+      jsx: 'react-jsx',
       baseUrl: '.',
       paths: {
         '@/*': ['./*'],
