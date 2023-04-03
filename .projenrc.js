@@ -12,7 +12,14 @@ const project = new web.NextJsTypeScriptProject({
     // projenCredentials: GithubCredentials.fromApp(),
   },
   gitignore: ['.env.local', '.vscode'],
-  deps: ['swr', '@next/font', 'next-auth', 'axios'],
+  deps: [
+    'swr',
+    '@next/font',
+    'next-auth',
+    'axios',
+    '@headlessui/react',
+    '@heroicons/react',
+  ],
   eslint: true,
   eslintOptions: {
     prettier: false,
@@ -37,7 +44,11 @@ const project = new web.NextJsTypeScriptProject({
   },
 });
 project.tryFindFile('tailwind.config.json').obj = {
-  content: ['./app/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    './app/**/*.{js,ts,jsx,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+  ],
   theme: {
     extend: {},
   },
