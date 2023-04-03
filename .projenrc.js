@@ -37,7 +37,7 @@ const project = new web.NextJsTypeScriptProject({
   },
 });
 project.tryFindFile('tailwind.config.json').obj = {
-  content: ['./src/**/*.{js,ts,jsx,tsx}'],
+  content: ['./app/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {},
   },
