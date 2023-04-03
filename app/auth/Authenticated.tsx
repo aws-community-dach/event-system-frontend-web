@@ -1,18 +1,18 @@
 'use client';
-
-import { signOut } from 'next-auth/react';
-import Link from 'next/link';
-
-export default function Authenticated() {
+export default function Authenticated(user) {
   return (
-    <li className='flex gap-8 items-center'>
-      <button
-        className='bg-gray-700 text-white text-sm px-6 py-2 rounded-md '
-        onClick={() => signOut()}
-      >
-        Sign Out
-      </button>
-      <Link href={'/dashboard'}>Dashboard</Link>
-    </li>
+    <>
+      <div className='flex-shrink-0'>
+        <img className='h-10 w-10 rounded-full' src={user.imageUrl} alt='' />
+      </div>
+      <div className='ml-3'>
+        <div className='text-base font-medium leading-none text-white'>
+          {user.name}
+        </div>
+        <div className='text-sm font-medium leading-none text-gray-400'>
+          {user.email}
+        </div>
+      </div>
+    </>
   );
 }

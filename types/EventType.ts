@@ -3,5 +3,6 @@ export type EventType = {
   name: string;
   date: string;
   location: string;
-  organizerID: number;
+  summary: string;
+  agenda: object;
 };
