@@ -1,4 +1,5 @@
 import './globals.css';
+import Nav from './Nav';
 
 export default function RootLayout({
   children,
@@ -12,7 +13,10 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>{children}</body>
+      <body className={`mx-4 md:mx-48 xl:mx-96 font-sans bg-gray-200`}>
+        <Nav />
+        {children}
+      </body>
     </html>
   );
 }
