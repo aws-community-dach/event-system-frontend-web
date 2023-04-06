@@ -2,13 +2,13 @@
 import { EventType } from '@/types/EventType';
 import Link from 'next/link';
 import Button from './Button';
-import Card from './Card';
+import Box from './Box';
 
 export default function EventCard({ event }: { event: EventType }) {
   const date = new Date(event.date).toLocaleDateString('de-DE');
 
   return (
-    <Card>
+    <Box>
       <div className='mt-3 sm:mt-0'>
         <div className=' text-2xl '>{event.name}</div>
         <div className='mt-2'>
@@ -25,6 +25,6 @@ export default function EventCard({ event }: { event: EventType }) {
           <div>{event.location}</div>
         </div>
       </div>
-    </Card>
+    </Box>
   );
 }
