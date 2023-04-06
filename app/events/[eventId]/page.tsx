@@ -7,7 +7,7 @@ export default async function Page({
 }) {
   return (
     <>
-      <EventForm eventId={params.eventId} />;
+      <EventForm eventId={params.eventId} />
     </>
   );
 }
