@@ -1,4 +1,5 @@
 import Box from '@/components/Box';
+import Button from '@/components/Button';
 import EventForm from '@/components/EventsForm';
 import { EventService } from '@/service/events/EventService';
 import { EventType } from '@/types/EventType';
@@ -15,27 +16,34 @@ export default async function Page({
   params: { eventId: string };
 }) {
   const event: EventType = await getEvent(params.eventId);
-  const date = new Date(event.date).toLocaleDateString('de-DE');
   return (
     <div className='grid grid-flow-row-dense lg:grid-cols-3 gap-4'>
       <div className='col-span-2'>
-        <Box>
-          <div className='grid gap-4'>
-            <h1>{event.name}</h1>
-            <div>{date}</div>
-            <div>{event.location}</div>
+        <Box className='h-screen'>
+          <div className='grid gap-2'>
+            <h1 className='text-3xl mb-4 font-bold'>{event.name}</h1>
+            <div className='mb-12 text-sm text-gray-500'>
+              <div>{event.date}</div>
+              <div>{event.location}</div>
+            </div>
             <div>{event.summary}</div>
+            <Button className='lg:hidden mt-4'>Registrieren</Button>
             <div>
-              {event.agenda.map((agenda) => {
-                return (
-                  <div key={agenda.name}>
-                    <div>
-                      {agenda.start} {agenda.end ? ` : ${agenda.end}` : ''} |{' '}
-                      {agenda.name}
+              {event.agenda && (
+                <h3 className='text-xl mb-2 mt-12 font-bold'>Agenda</h3>
+              )}
+              <div className='grid gap-2'>
+                {event.agenda.map((agenda) => {
+                  return (
+                    <div key={agenda.name}>
+                      <div>
+                        {agenda.start} {agenda.end ? ` - ${agenda.end}` : ''} |{' '}
+                        {agenda.name}
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           </div>
         </Box>
