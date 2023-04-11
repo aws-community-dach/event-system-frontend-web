@@ -1,5 +1,6 @@
 import Box from '@/components/Box';
 import Button from '@/components/Button';
+import EventFormModal from '@/components/EventFormModal';
 import EventForm from '@/components/EventsForm';
 import { EventService } from '@/service/events/EventService';
 import { EventType } from '@/types/EventType';
@@ -27,7 +28,7 @@ export default async function Page({
               <div>{event.location}</div>
             </div>
             <div>{event.summary}</div>
-            <Button className='lg:hidden mt-4'>Registrieren</Button>
+            <EventFormModal eventId={params.eventId} />
             <div>
               {event.agenda && (
                 <h3 className='text-xl mb-2 mt-12 font-bold'>Agenda</h3>
