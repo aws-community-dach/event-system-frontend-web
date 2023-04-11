@@ -3,20 +3,23 @@
 import { ParticipantService } from '@/service/events/ParticipantService';
 import { ParticipantFormType } from '@/types/ParticipantType';
 import Box from './Box';
+import Button from './Button';
 
 export default function EventForm({ eventId }: { eventId: string }) {
   const handleSubmit = (event: React.FormEvent<ParticipantFormType>) => {
     event.preventDefault();
 
     const target = event.currentTarget.elements;
+    const form = event.currentTarget;
+    form.reset();
 
     const data = {
-      name: target.name.value,
-      displayName: target.displayName.value,
-      email: target.email.value,
+      name: target.name.value.trim(),
+      displayName: target.displayName.value.trim(),
+      email: target.email.value.trim(),
     };
 
-    void ParticipantService(eventId).add(data);
+    void ParticipantService(eventId).add('', data);
   };
 
   return (
@@ -70,12 +73,7 @@ export default function EventForm({ eventId }: { eventId: string }) {
         </p>
 
         <div className='mt-6 flex items-center justify-end gap-x-6'>
-          <button
-            type='submit'
-            className='rounded-md bg-primary-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600'
-          >
-            Registrieren
-          </button>
+          <Button type='submit'>Registrieren</Button>
         </div>
       </form>
     </Box>
