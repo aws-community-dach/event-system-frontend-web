@@ -5,13 +5,20 @@ import { ParticipantFormType } from '@/types/ParticipantType';
 import Box from './Box';
 import Button from './Button';
 
-export default function EventForm({ eventId }: { eventId: string }) {
+type EventFormProps = {
+  eventId: string;
+  onSubmitCallback?: () => void;
+};
+
+export default function EventForm({
+  eventId,
+  onSubmitCallback = () => {},
+}: EventFormProps) {
   const handleSubmit = (event: React.FormEvent<ParticipantFormType>) => {
     event.preventDefault();
 
     const target = event.currentTarget.elements;
     const form = event.currentTarget;
-    form.reset();
 
     const data = {
       name: target.name.value.trim(),
@@ -20,6 +27,8 @@ export default function EventForm({ eventId }: { eventId: string }) {
     };
 
     void ParticipantService(eventId).add('', data);
+    form.reset();
+    onSubmitCallback();
   };
 
   return (
@@ -73,7 +82,9 @@ export default function EventForm({ eventId }: { eventId: string }) {
         </p>
 
         <div className='mt-6 flex items-center justify-end gap-x-6'>
-          <Button type='submit'>Registrieren</Button>
+          <Button className='w-full' type='submit'>
+            Registrieren
+          </Button>
         </div>
       </form>
     </Box>
