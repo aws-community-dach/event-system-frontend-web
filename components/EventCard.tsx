@@ -3,6 +3,7 @@ import { EventType } from '@/types/EventType';
 import Link from 'next/link';
 import Button from './Button';
 import Box from './Box';
+import EventFormModal from './EventFormModal';
 
 export default function EventCard({ event }: { event: EventType }) {
   const date = new Date(event.date).toLocaleDateString('de-DE');
@@ -17,7 +18,7 @@ export default function EventCard({ event }: { event: EventType }) {
         <div className='my-6'>
           <Link href={`/events/${event.id}`}>Mehr erfahren</Link>
         </div>
-        <Button className='w-full'>Registrieren</Button>
+        <EventFormModal eventId={event.id} />
 
         <div className='py-3 sm:flex text-gray-500'>
           <div className='flex flex-col'>
