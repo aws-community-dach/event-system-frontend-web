@@ -2,6 +2,7 @@ type ButtonType = {
   type?: 'submit' | 'button' | 'reset' | undefined;
   className?: string;
   processing?: boolean;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   children: React.ReactNode;
 };
 
@@ -9,7 +10,9 @@ export default function Button({
   type = 'submit',
   className = '',
   processing = false,
+  onClick,
   children,
+  ...rest
 }: ButtonType) {
   return (
     <button
@@ -19,7 +22,9 @@ export default function Button({
           processing && 'opacity-25'
         } ` + className
       }
+      onClick={onClick}
       disabled={processing}
+      {...rest}
     >
       {children}
     </button>
