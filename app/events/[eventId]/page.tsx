@@ -1,5 +1,4 @@
 import Box from '@/components/Box';
-import Button from '@/components/Button';
 import EventFormModal from '@/components/EventFormModal';
 import EventForm from '@/components/EventsForm';
 import { EventService } from '@/service/events/EventService';
