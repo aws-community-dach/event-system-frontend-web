@@ -1,8 +1,8 @@
 'use client';
-import { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import EventForm from './EventsForm';
+import { Fragment, useRef, useState } from 'react';
 import Button from './Button';
+import EventForm from './EventsForm';
 
 export default function EventFormModal({ eventId }: { eventId: string }) {
   const [open, setOpen] = useState(false);

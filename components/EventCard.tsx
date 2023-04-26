@@ -1,8 +1,8 @@
 'use client';
+import EventFormModal from './EventFormModal';
 import { EventType } from '@/types/EventType';
 import Link from 'next/link';
 import Box from './Box';
-import EventFormModal from './EventFormModal';
 
 export default function EventCard({
   event,
