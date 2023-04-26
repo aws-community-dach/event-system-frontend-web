@@ -11,9 +11,7 @@ export default function EventCardList({
 }) {
   return (
     <>
-      <div
-        className={`mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-3 xl:gap-x-8`}
-      >
+      <div className='mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-3 xl:gap-x-8'>
         {eventList?.map((event) => (
           <EventCard key={event.id} event={event} className={className} />
         ))}
