@@ -1,9 +1,9 @@
 'use client';
 
-import { ParticipantService } from '@/service/events/ParticipantService';
-import { ParticipantFormType } from '@/types/ParticipantType';
 import Box from './Box';
 import Button from './Button';
+import { ParticipantService } from '@/service/events/ParticipantService';
+import { ParticipantFormType } from '@/types/ParticipantType';
 
 type EventFormProps = {
   eventId: string;
