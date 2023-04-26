@@ -4,11 +4,17 @@ import Link from 'next/link';
 import Box from './Box';
 import EventFormModal from './EventFormModal';
 
-export default function EventCard({ event }: { event: EventType }) {
+export default function EventCard({
+  event,
+  className = '',
+}: {
+  event: EventType;
+  className?: string;
+}) {
   const date = new Date(event.date).toLocaleDateString('de-DE');
 
   return (
-    <Box className=''>
+    <Box className={className}>
       <div className='mt-3 sm:mt-0'>
         <div className=' text-2xl '>{event.name}</div>
         <div className='mt-2'>
