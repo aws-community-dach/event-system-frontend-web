@@ -1,10 +1,10 @@
 'use client';
 
+import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
+import { useState } from 'react';
 import Button from '@/components/Button';
 import EventCardList from '@/components/EventCardList';
-import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 import { EventType } from '@/types/EventType';
-import { useState } from 'react';
 
 function fuzzyMatch(searchText: string, textToSearch: string): boolean {
   const searchPattern = searchText

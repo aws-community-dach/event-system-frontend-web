@@ -1,6 +1,6 @@
 import './globals.css';
-import Nav from './Nav';
 import { getServerSession } from 'next-auth/next';
+import Nav from './Nav';
 import { authOptions } from 'pages/api/auth/[...nextauth]';
 
 export default async function RootLayout({

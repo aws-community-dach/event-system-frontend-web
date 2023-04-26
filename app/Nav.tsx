@@ -1,13 +1,13 @@
 'use client';
-import { Fragment } from 'react';
+
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import SignIn from './auth/SignIn';
 
+import { usePathname } from 'next/navigation';
 import { Session } from 'next-auth';
 import { signOut } from 'next-auth/react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Fragment } from 'react';
+import SignIn from './auth/SignIn';
 
 let navigation = [
   { name: 'Home', href: '/' },
