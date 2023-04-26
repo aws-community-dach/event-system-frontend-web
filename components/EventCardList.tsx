@@ -1,6 +1,6 @@
 'use client';
-import { EventType } from '@/types/EventType';
 import EventCard from './EventCard';
+import { EventType } from '@/types/EventType';
 
 export default function EventCardList({
   eventList,
