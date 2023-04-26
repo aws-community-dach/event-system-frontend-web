@@ -39,9 +39,11 @@ export default function EventsPage({ eventList }: { eventList: EventType[] }) {
 
   return (
     <>
-      <div className='w-full flex bg-white'>
-        <div className='w-1/4 p-4 border-2 border-red-600'>
-          <h2 className='font-semibold mb-4'>Standorte</h2>
+      <div className='w-full flex bg-white rounded'>
+        <div className='w-1/4 p-4'>
+          <h2 className='font-semibold mb-4 border-b-2 border-grey-200'>
+            Standorte
+          </h2>
           {locations.map((location) => (
             <div key={location} className='mb-2'>
               <input
@@ -57,18 +59,18 @@ export default function EventsPage({ eventList }: { eventList: EventType[] }) {
             </div>
           ))}
         </div>
-        <div className='w-3/4 flex flex-col border-2 border-blue-500'>
-          <div className='p-4 border-2 border-green-500'>
+        <div className='w-3/4 flex flex-col'>
+          <div className='p-4 '>
             <input
               type='text'
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className='rounded border border-gray-300 py-2 px-3 w-full'
+              className='rounded py-2 px-3 w-full border-2'
               placeholder='Suche...'
             />
           </div>
 
-          <div className='border-2 border-rose-200 p-4 flex-1 overflow-y-auto'>
+          <div className=' p-4 flex-1 overflow-y-auto'>
             <EventCardList className='border-2' eventList={filteredEvents} />
           </div>
         </div>
