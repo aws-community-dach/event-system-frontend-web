@@ -16,13 +16,12 @@ export default function EventCard({
   return (
     <Box className={className}>
       <div className='mt-3 sm:mt-0'>
-        <div className=' text-2xl '>{event.name}</div>
-        <div className='mt-2'>
-          <p className='text-sm text-gray-500'>{event.summary}</p>
-        </div>
-        <div className='my-6'>
-          <Link href={`/events/${event.id}`}>Mehr erfahren</Link>
-        </div>
+        <Link href={`/events/${event.id}`}>
+          <div className=' text-2xl '>{event.name}</div>
+          <div className='mt-2'>
+            <p className='text-sm text-gray-500'>{event.summary}</p>
+          </div>
+        </Link>
         <EventFormModal eventId={event.id} />
 
         <div className='py-3 sm:flex text-gray-500'>
