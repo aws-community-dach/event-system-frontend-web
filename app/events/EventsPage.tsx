@@ -1,6 +1,8 @@
 'use client';
 
+import Button from '@/components/Button';
 import EventCardList from '@/components/EventCardList';
+import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 import { EventType } from '@/types/EventType';
 import { useState } from 'react';
 
@@ -16,6 +18,7 @@ function fuzzyMatch(searchText: string, textToSearch: string): boolean {
 export default function EventsPage({ eventList }: { eventList: EventType[] }) {
   const [search, setSearch] = useState('');
   const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const locations = Array.from(
     new Set(eventList.map((event) => event.location))
@@ -39,11 +42,24 @@ export default function EventsPage({ eventList }: { eventList: EventType[] }) {
 
   return (
     <>
-      <div className='w-full flex bg-white rounded'>
-        <div className='w-1/4 p-4'>
-          <h2 className='font-semibold mb-4 border-b-2 border-grey-200'>
-            Standorte
-          </h2>
+      <div className='w-full flex flex-col md:flex-row bg-white rounded'>
+        <div className='md:hidden p-4 mb-2 ml-auto'>
+          <Button
+            className={` ${sidebarOpen ? 'bg-primary-600' : ''}`}
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+          >
+            <AdjustmentsHorizontalIcon
+              className='block h-6 w-6'
+              aria-hidden='true'
+            />
+          </Button>
+        </div>
+        <div
+          className={`w-full md:w-1/4 p-4 md:block ${
+            sidebarOpen ? 'block' : 'hidden'
+          }`}
+        >
+          <h2 className='font-semibold mb-4'>Standorte</h2>
           {locations.map((location) => (
             <div key={location} className='mb-2'>
               <input
@@ -59,8 +75,8 @@ export default function EventsPage({ eventList }: { eventList: EventType[] }) {
             </div>
           ))}
         </div>
-        <div className='w-3/4 flex flex-col'>
-          <div className='p-4 '>
+        <div className='w-full md:w-3/4 flex flex-col'>
+          <div className='p-4'>
             <input
               type='text'
               value={search}
@@ -70,7 +86,7 @@ export default function EventsPage({ eventList }: { eventList: EventType[] }) {
             />
           </div>
 
-          <div className=' p-4 flex-1 overflow-y-auto'>
+          <div className='p-4 flex-1 overflow-y-auto'>
             <EventCardList className='border-2' eventList={filteredEvents} />
           </div>
         </div>
