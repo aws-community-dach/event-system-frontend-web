@@ -1,7 +1,6 @@
 'use client';
 import { EventType } from '@/types/EventType';
 import Link from 'next/link';
-import Button from './Button';
 import Box from './Box';
 import EventFormModal from './EventFormModal';
 
