@@ -12,7 +12,14 @@ const project = new web.NextJsTypeScriptProject({
     // projenCredentials: GithubCredentials.fromApp(),
   },
   gitignore: ['.env.local', '.vscode'],
-  deps: ['swr', '@next/font', 'next-auth', 'axios'],
+  deps: [
+    'swr',
+    '@next/font',
+    'next-auth',
+    'axios',
+    '@headlessui/react',
+    '@heroicons/react',
+  ],
   eslint: true,
   eslintOptions: {
     prettier: false,
@@ -22,6 +29,7 @@ const project = new web.NextJsTypeScriptProject({
     compilerOptions: {
       rootDir: '.',
       outDir: '.',
+      jsx: 'react-jsx',
       baseUrl: '.',
       paths: {
         '@/*': ['./*'],
@@ -36,9 +44,27 @@ const project = new web.NextJsTypeScriptProject({
   },
 });
 project.tryFindFile('tailwind.config.json').obj = {
-  content: ['./src/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    './app/**/*.{js,ts,jsx,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+  ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: {
+          100: '#cffafe',
+          200: '#a5f3fc',
+          300: '#67e8f9',
+          400: '#22d3ee',
+          500: '#06b6d4',
+          600: '#0891b2',
+          700: '#0e7490',
+          800: '#155e75',
+          900: '#164e63',
+        },
+      },
+    },
   },
   plugins: [],
 };

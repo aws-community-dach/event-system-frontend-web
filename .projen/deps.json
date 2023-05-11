@@ -54,6 +54,14 @@
       "type": "build"
     },
     {
+      "name": "@headlessui/react",
+      "type": "runtime"
+    },
+    {
+      "name": "@heroicons/react",
+      "type": "runtime"
+    },
+    {
       "name": "@next/font",
       "type": "runtime"
     },

@@ -1,3 +1,4 @@
+import EventsPage from './EventsPage';
 import { EventService } from '@/service/events/EventService';
 import { EventType } from '@/types/EventType';
 
@@ -8,6 +9,7 @@ async function getData() {
 }
 
 export default async function Page() {
-  const event: EventType[] = await getData();
-  return <div>{JSON.stringify(event)}</div>;
+  const events: EventType[] = await getData();
+
+  return <EventsPage eventList={events} />;
 }
