@@ -3,11 +3,11 @@
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Session } from 'next-auth';
 import { signOut } from 'next-auth/react';
 import { Fragment } from 'react';
-import Link from 'next/link';
 import SignIn from './auth/SignIn';
 
 let navigation = [
@@ -52,7 +52,7 @@ export default function Nav({ session }: { session: Session | null }) {
                             isActive
                               ? 'bg-gray-900 text-white'
                               : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                            'rounded-md px-3 py-2 text-sm font-medium'
+                            'rounded-md px-3 py-2 text-sm font-medium',
                           )}
                           aria-current={isActive ? 'page' : undefined}
                           key={item.name}
@@ -101,7 +101,7 @@ export default function Nav({ session }: { session: Session | null }) {
                               onClick={() => signOut()}
                               className={classNames(
                                 active ? 'bg-gray-100' : '',
-                                'block px-4 py-2 text-sm text-gray-700'
+                                'block px-4 py-2 text-sm text-gray-700',
                               )}
                             >
                               Abmelden
@@ -140,7 +140,7 @@ export default function Nav({ session }: { session: Session | null }) {
                       isActive
                         ? 'bg-gray-900 text-white'
                         : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'block rounded-md px-3 py-2 text-base font-medium'
+                      'block rounded-md px-3 py-2 text-base font-medium',
                     )}
                     aria-current={isActive ? 'page' : undefined}
                   >

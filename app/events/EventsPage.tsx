@@ -21,7 +21,7 @@ export default function EventsPage({ eventList }: { eventList: EventType[] }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const locations = Array.from(
-    new Set(eventList.map((event) => event.location))
+    new Set(eventList.map((event) => event.location)),
   );
 
   const filteredEvents = eventList.filter((event) => {
