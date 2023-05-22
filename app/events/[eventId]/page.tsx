@@ -28,23 +28,23 @@ export default async function Page({
             </div>
             <div>{event.summary}</div>
             <EventFormModal eventId={params.eventId} />
-            <div>
-              {event.agenda && (
+            {event.agenda && (
+              <div>
                 <h3 className='text-xl mb-2 mt-12 font-bold'>Agenda</h3>
-              )}
-              <div className='grid gap-2'>
-                {event.agenda.map((agenda) => {
-                  return (
-                    <div key={agenda.name}>
-                      <div>
-                        {agenda.start} {agenda.end ? ` - ${agenda.end}` : ''} |{' '}
-                        {agenda.name}
+                <div className='grid gap-2'>
+                  {event.agenda.map((agenda) => {
+                    return (
+                      <div key={agenda.name}>
+                        <div>
+                          {agenda.start} {agenda.end ? ` - ${agenda.end}` : ''}{' '}
+                          | {agenda.name}
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </Box>
       </div>
