@@ -11,7 +11,7 @@ const project = new web.NextJsTypeScriptProject({
     mergify: false,
     // projenCredentials: GithubCredentials.fromApp(),
   },
-  gitignore: ['.env.local', '.vscode'],
+  gitignore: ['.env.local', '.vscode', '.DS_Store'],
   deps: [
     'swr',
     '@next/font',
