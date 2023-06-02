@@ -1,4 +1,5 @@
-// EventForm.tsx
+'use client';
+
 import Box from './Box';
 import Button from './Button';
 import { ParticipantService } from '@/service/events/ParticipantService';
