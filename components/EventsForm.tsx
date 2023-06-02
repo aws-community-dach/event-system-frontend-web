@@ -1,9 +1,9 @@
-'use client';
-
+// EventForm.tsx
 import Box from './Box';
 import Button from './Button';
 import { ParticipantService } from '@/service/events/ParticipantService';
 import { ParticipantFormType } from '@/types/ParticipantType';
+import FormInput from './FormInput';
 
 type EventFormProps = {
   eventId: string;
@@ -35,46 +35,31 @@ export default function EventForm({
     <Box>
       <form className='w-full' onSubmit={handleSubmit}>
         <div className='grid grid-cols-1 gap-x-6 gap-y-6'>
-          <div>
-            <div className='mt-2'>
-              <input
-                type='text'
-                name='name'
-                id='name'
-                placeholder='Name'
-                autoComplete='given-name'
-                required
-                className='pl-2 py-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6'
-              />
-            </div>
-          </div>
+          <FormInput
+            type='text'
+            name='name'
+            id='name'
+            placeholder='Name'
+            autoComplete='given-name'
+            required
+          />
 
-          <div>
-            <div className='mt-2'>
-              <input
-                type='text'
-                name='displayName'
-                id='displayName'
-                placeholder='Anzeigename'
-                required
-                className='pl-2 py-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6'
-              />
-            </div>
-          </div>
+          <FormInput
+            type='text'
+            name='displayName'
+            id='displayName'
+            placeholder='Anzeigename'
+            required
+          />
 
-          <div>
-            <div className='mt-2'>
-              <input
-                id='email'
-                name='email'
-                type='email'
-                placeholder='E-Mail'
-                autoComplete='email'
-                required
-                className='pl-2 py-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6'
-              />
-            </div>
-          </div>
+          <FormInput
+            id='email'
+            name='email'
+            type='email'
+            placeholder='E-Mail'
+            autoComplete='email'
+            required
+          />
         </div>
 
         <p className='mt-4 text-sm leading-6 text-gray-600'>
