@@ -1,7 +1,7 @@
 import React from 'react';
 
 // prettier-ignore
-type FormInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>,HTMLInputElement> & { label?: string };
+type FormInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & { label?: string };
 
 export default function FormInput({
   label,
