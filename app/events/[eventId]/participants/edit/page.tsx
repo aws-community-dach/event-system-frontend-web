@@ -36,13 +36,6 @@ async function updateParticipantRegistration(
   ParticipantService(eventId).update(participant.id, { ...participant });
 }
 
-async function deleteParticipantRegistration(
-  eventId: string,
-  participantId: string,
-) {
-  ParticipantService(eventId).delete(participantId);
-}
-
 export default function ParticipantUpdateForm({
   params,
 }: {
