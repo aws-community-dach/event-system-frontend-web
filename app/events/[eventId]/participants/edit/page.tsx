@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { ParticipantType } from '@/types/ParticipantType';
-import { ParticipantService } from '@/service/events/ParticipantService';
-import FormInput from '@/components/FormInput';
 import Button from '@/components/Button';
+import FormInput from '@/components/FormInput';
+import { ParticipantService } from '@/service/events/ParticipantService';
+import { ParticipantType } from '@/types/ParticipantType';
 
 async function verifyParticipant(
   eventId: string,
