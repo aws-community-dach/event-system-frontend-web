@@ -33,7 +33,7 @@ async function updateParticipantRegistration(
   eventId: string,
   participant: ParticipantType,
 ) {
-  ParticipantService(eventId).update(participant.id, { ...participant });
+  await ParticipantService(eventId).update(participant.id, { ...participant });
 }
 
 export default function ParticipantUpdateForm({
