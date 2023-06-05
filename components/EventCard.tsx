@@ -17,7 +17,7 @@ export default function EventCard({
     <Box className={className}>
       <div className='mt-3 sm:mt-0'>
         <Link href={`/events/${event.id}`}>
-          <div className=' text-2xl '>{event.name}</div>
+          <div className='text-2xl'>{event.name}</div>
           <div className='mt-2'>
             <p className='text-sm text-gray-500'>{event.summary}</p>
           </div>
