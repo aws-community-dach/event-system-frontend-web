@@ -2,9 +2,9 @@
 
 import Box from './Box';
 import Button from './Button';
+import FormInput from './FormInput';
 import { ParticipantService } from '@/service/events/ParticipantService';
 import { ParticipantFormType } from '@/types/ParticipantType';
-import FormInput from './FormInput';
 
 type EventFormProps = {
   eventId: string;
