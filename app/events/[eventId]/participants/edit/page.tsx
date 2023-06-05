@@ -36,6 +36,13 @@ async function updateParticipantRegistration(
   ParticipantService(eventId).update(participant.id, { ...participant });
 }
 
+async function deleteParticipantRegistration(
+  eventId: string,
+  participantId: string,
+) {
+  ParticipantService(eventId).delete(participantId);
+}
+
 export default function ParticipantUpdateForm({
   params,
 }: {
@@ -71,6 +78,15 @@ export default function ParticipantUpdateForm({
     }
   };
 
+  const handleDelete = async () => {
+    if (participant) {
+      await ParticipantService(params.eventId).delete(participant.id, {});
+      setId('');
+      setEmail('');
+      setParticipant(null);
+    }
+  };
+
   return (
     <>
       <h1>Update your Registration</h1>
@@ -95,6 +111,9 @@ export default function ParticipantUpdateForm({
             placeholder='Your display name'
           />
           <Button onClick={handleUpdate}>Update Registration</Button>
+          <Button color='danger' onClick={handleDelete}>
+            Delete Registration
+          </Button>
         </>
       ) : (
         <>
