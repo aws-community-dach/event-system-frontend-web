@@ -1,6 +1,7 @@
 const { web } = require('projen');
 const { GithubCredentials } = require('projen/lib/github');
 const { NpmAccess, NodePackageManager } = require('projen/lib/javascript');
+const colors = require('tailwindcss/colors');
 
 const project = new web.NextJsTypeScriptProject({
   defaultReleaseBranch: 'main',
@@ -44,6 +45,7 @@ const project = new web.NextJsTypeScriptProject({
   },
 });
 project.tryFindFile('tailwind.config.json').obj = {
+  mode: 'jit',
   content: [
     './app/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -53,6 +55,7 @@ project.tryFindFile('tailwind.config.json').obj = {
     extend: {
       colors: {
         primary: {
+          DEFAULT: '#06b6d4',
           100: '#cffafe',
           200: '#a5f3fc',
           300: '#67e8f9',
@@ -64,6 +67,7 @@ project.tryFindFile('tailwind.config.json').obj = {
           900: '#164e63',
         },
         link: {
+          DEFAULT: '#3273dc',
           100: '#ebf1fc',
           200: '#ccdcf6',
           300: '#adc7f1',
@@ -75,6 +79,7 @@ project.tryFindFile('tailwind.config.json').obj = {
           900: '#173463',
         },
         dark: {
+          DEFAULT: '#363636',
           100: '#ebebeb',
           200: '#cdcdcd',
           300: '#afafaf',
@@ -86,6 +91,7 @@ project.tryFindFile('tailwind.config.json').obj = {
           900: '#181818',
         },
         light: {
+          DEFAULT: '#f5f5f5',
           100: '#fefefe',
           200: '#fdfdfd',
           300: '#fbfbfb',
@@ -97,6 +103,7 @@ project.tryFindFile('tailwind.config.json').obj = {
           900: '#6e6e6e',
         },
         info: {
+          DEFAULT: '#209cee',
           100: '#e9f5fd',
           200: '#c7e6fb',
           300: '#a6d7f8',
@@ -108,6 +115,7 @@ project.tryFindFile('tailwind.config.json').obj = {
           900: '#0e466b',
         },
         success: {
+          DEFAULT: '#48c774',
           100: '#edf9f1',
           200: '#d1f1dc',
           300: '#b6e9c7',
@@ -119,6 +127,7 @@ project.tryFindFile('tailwind.config.json').obj = {
           900: '#205a34',
         },
         warning: {
+          DEFAULT: '#ffdd57',
           100: '#fffcee',
           200: '#fff7d5',
           300: '#fff1bc',
@@ -130,6 +139,7 @@ project.tryFindFile('tailwind.config.json').obj = {
           900: '#736327',
         },
         danger: {
+          DEFAULT: '#ff3860',
           100: '#ffebef',
           200: '#ffcdd7',
           300: '#ffafbf',
