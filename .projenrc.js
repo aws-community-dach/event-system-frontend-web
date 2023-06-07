@@ -1,7 +1,6 @@
 const { web } = require('projen');
 const { GithubCredentials } = require('projen/lib/github');
 const { NpmAccess, NodePackageManager } = require('projen/lib/javascript');
-const colors = require('tailwindcss/colors');
 
 const project = new web.NextJsTypeScriptProject({
   defaultReleaseBranch: 'main',
