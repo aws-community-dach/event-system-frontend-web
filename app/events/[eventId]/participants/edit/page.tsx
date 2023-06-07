@@ -103,10 +103,13 @@ export default function ParticipantUpdateForm({
             }
             placeholder='Your display name'
           />
-          <Button onClick={handleUpdate}>Update Registration</Button>
-          <Button color='danger' onClick={handleDelete}>
-            Delete Registration
-          </Button>
+          <div className='flex gap-2'>
+            <Button onClick={handleUpdate}>Update Registration</Button>
+
+            <Button color='danger' onClick={handleDelete}>
+              Delete Registration
+            </Button>
+          </div>
         </>
       ) : (
         <>
