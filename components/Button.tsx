@@ -1,12 +1,6 @@
 type ButtonType = {
   type?: 'submit' | 'button' | 'reset' | undefined;
-  color?:
-    | 'primary'
-    | 'secondary'
-    | 'danger'
-    | 'warning'
-    | 'success'
-    | undefined;
+  color?: 'accent' | 'secondary' | 'danger' | 'warning' | 'success' | undefined;
   className?: string;
   processing?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -14,7 +8,7 @@ type ButtonType = {
 };
 
 const colorClasses = {
-  primary: 'border-primary bg-primary hover:bg-primary-dark',
+  accent: 'border-accent bg-accent hover:bg-accent-dark',
   secondary: 'border-secondary bg-secondary hover:bg-secondary-dark',
   danger: 'border-danger bg-danger hover:bg-danger-dark',
   warning: 'border-warning bg-warning hover:bg-warning-dark',
@@ -24,13 +18,13 @@ const colorClasses = {
 export default function Button({
   type = 'submit',
   className = '',
-  color = 'primary',
+  color = 'accent',
   processing = false,
   onClick,
   children,
   ...rest
 }: ButtonType) {
-  const colorClass = colorClasses[color] || colorClasses['primary'];
+  const colorClass = colorClasses[color] || colorClasses['accent'];
 
   return (
     <button

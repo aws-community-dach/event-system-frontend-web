@@ -33,7 +33,7 @@ export default function EventForm({
   };
 
   return (
-    <Box>
+    <Box className='border  drop-shadow'>
       <form className='w-full' onSubmit={handleSubmit}>
         <div className='grid grid-cols-1 gap-x-6 gap-y-6'>
           <FormInput

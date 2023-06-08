@@ -17,9 +17,9 @@ export default async function Page({
 }) {
   const event: EventType = await getEvent(params.eventId);
   return (
-    <div className='grid grid-flow-row-dense lg:grid-cols-3 gap-4'>
+    <div className='grid grid-flow-row-dense lg:grid-cols-3 gap-4 '>
       <div className='col-span-2'>
-        <Box className='h-screen'>
+        <Box className='h-screen border  drop-shadow'>
           <div className='grid gap-2'>
             <h1 className='text-3xl mb-4 font-bold'>{event.name}</h1>
             <div className='mb-12 text-sm text-gray-500'>

@@ -29,7 +29,7 @@ export default function Nav({ session }: { session: Session | null }) {
     return pathname!.startsWith(itemHref);
   };
   return (
-    <Disclosure as='nav' className='bg-gray-800'>
+    <Disclosure as='nav' className='bg-dark'>
       {({ open }) => (
         <>
           <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>

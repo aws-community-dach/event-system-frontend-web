@@ -14,7 +14,7 @@ export default function EventCard({
   const date = new Date(event.date).toLocaleDateString('de-DE');
 
   return (
-    <Box className={className}>
+    <Box className={`${className} border  drop-shadow`}>
       <div className='mt-3 sm:mt-0'>
         <Link href={`/events/${event.id}`}>
           <div className='text-2xl'>{event.name}</div>
