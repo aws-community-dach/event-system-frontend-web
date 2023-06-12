@@ -5,6 +5,7 @@ import Button from './Button';
 import FormInput from './FormInput';
 import { ParticipantService } from '@/service/events/ParticipantService';
 import { ParticipantFormType } from '@/types/ParticipantType';
+import Link from 'next/link';
 
 type EventFormProps = {
   eventId: string;
@@ -62,15 +63,26 @@ export default function EventForm({
             required
           />
         </div>
-
         <p className='mt-4 text-sm leading-6 text-gray-600'>
           Es gelten die Datenschutzbestimmungen
         </p>
-
         <div className='mt-6 flex items-center justify-end gap-x-6'>
           <Button className='w-full' type='submit'>
             Registrieren
           </Button>
+        </div>
+        <div className='mt-5'>
+          <div>Bereits registiert?</div>
+          <div>
+            <Link
+              className='text-link'
+              href={`/events/${eventId}/participants/edit`}
+            >
+              <Button type='button' className='w-full' color='secondary'>
+                Daten ändern
+              </Button>
+            </Link>
+          </div>
         </div>
       </form>
     </Box>
