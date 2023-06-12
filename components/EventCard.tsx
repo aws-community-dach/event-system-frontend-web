@@ -1,9 +1,10 @@
 'use client';
 import Link from 'next/link';
 import Box from './Box';
-import EventFormModal from './EventFormModal';
 import { EventType } from '@/types/EventType';
-import { formatDate } from '@/app/utils';
+import { EventDetails } from './EventDetails';
+import Button from './Button';
+import EventFormModal from './EventFormModal';
 
 export default function EventCard({
   event,
@@ -12,25 +13,19 @@ export default function EventCard({
   event: EventType;
   className?: string;
 }) {
-  const date = formatDate(event.date, 'date');
-
   return (
-    <Box className={`${className} border  drop-shadow`}>
-      <div className='mt-3 sm:mt-0'>
+    <Box className={`${className} border drop-shadow`}>
+      <div className='mt-3 sm:mt-0 grow pr-4'>
         <Link href={`/events/${event.id}`}>
           <div className='text-2xl'>{event.name}</div>
           <div className='mt-2'>
             <p className='text-sm text-gray-500'>{event.summary}</p>
           </div>
         </Link>
+      </div>
+      <div className='basis-1/3'>
+        <EventDetails date={event.date} location={event.location} />
         <EventFormModal eventId={event.id} />
-
-        <div className='py-3 sm:flex text-gray-500'>
-          <div className='flex flex-col'>
-            <div>{date}</div>
-            <div>{event.location}</div>
-          </div>
-        </div>
       </div>
     </Box>
   );
