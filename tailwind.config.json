@@ -12,6 +12,7 @@
         "borderColor": {
           "DEFAULT": "#f1f3f3"
         },
+        "accent-dark": "#ec7211",
         "accent": {
           "50": "#FFE2B8",
           "100": "#FFDAA3",

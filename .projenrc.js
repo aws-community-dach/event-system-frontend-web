@@ -57,6 +57,7 @@ project.tryFindFile('tailwind.config.json').obj = {
         borderColor: {
           DEFAULT: '#f1f3f3',
         },
+        'accent-dark': '#ec7211',
         accent: {
           DEFAULT: '#FF9900',
           50: '#FFE2B8',
