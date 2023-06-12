@@ -43,7 +43,7 @@ export default function EventsPage({ eventList }: { eventList: EventType[] }) {
   return (
     <>
       <div className='w-full flex flex-col md:flex-row border  rounded'>
-        <div className='md:hidden p-4 mb-2 ml-auto border '>
+        <div className='md:hidden p-4 mb-2 ml-auto'>
           <Button
             className={` ${sidebarOpen ? 'bg-accent-600' : ''}`}
             onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -55,7 +55,7 @@ export default function EventsPage({ eventList }: { eventList: EventType[] }) {
           </Button>
         </div>
         <div
-          className={`w-full md:w-1/4 p-4 md:block ${
+          className={`w-full md:w-1/5 p-4 md:block ${
             sidebarOpen ? 'block' : 'hidden'
           }`}
         >
