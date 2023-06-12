@@ -3,7 +3,6 @@ import Link from 'next/link';
 import Box from './Box';
 import { EventType } from '@/types/EventType';
 import { EventDetails } from './EventDetails';
-import Button from './Button';
 import EventFormModal from './EventFormModal';
 
 export default function EventCard({
