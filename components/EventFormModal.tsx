@@ -20,7 +20,7 @@ export default function EventFormModal({ eventId }: { eventId: string }) {
 
   return (
     <>
-      <Button className='w-full lg:hidden mt-4' onClick={() => setOpen(true)}>
+      <Button className='w-full mt-4' onClick={() => setOpen(true)}>
         Registrieren
       </Button>
 
