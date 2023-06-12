@@ -1,3 +1,4 @@
+import { formatDate } from '@/app/utils';
 import Box from '@/components/Box';
 import EventFormModal from '@/components/EventFormModal';
 import EventForm from '@/components/EventsForm';
@@ -15,7 +16,9 @@ export default async function Page({
 }: {
   params: { eventId: string };
 }) {
+  const formatType = 'datetime-no-year';
   const event: EventType = await getEvent(params.eventId);
+  const date = formatDate(event.date, formatType);
   return (
     <div className='grid grid-flow-row-dense lg:grid-cols-3 gap-4 '>
       <div className='col-span-2'>
@@ -23,7 +26,7 @@ export default async function Page({
           <div className='grid gap-2'>
             <h1 className='text-3xl mb-4 font-bold'>{event.name}</h1>
             <div className='mb-12 text-sm text-gray-500'>
-              <div>{event.date}</div>
+              <div>{date}</div>
               <div>{event.location}</div>
             </div>
             <div>{event.summary}</div>
@@ -36,7 +39,10 @@ export default async function Page({
                     return (
                       <div key={agenda.name}>
                         <div>
-                          {agenda.start} {agenda.end ? ` - ${agenda.end}` : ''}{' '}
+                          {formatDate(agenda.start, formatType)}{' '}
+                          {agenda.end
+                            ? ` - ${formatDate(agenda.end, formatType)}`
+                            : ''}{' '}
                           | {agenda.name}
                         </div>
                       </div>

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Box from './Box';
 import EventFormModal from './EventFormModal';
 import { EventType } from '@/types/EventType';
+import { formatDate } from '@/app/utils';
 
 export default function EventCard({
   event,
@@ -11,7 +12,7 @@ export default function EventCard({
   event: EventType;
   className?: string;
 }) {
-  const date = new Date(event.date).toLocaleDateString('de-DE');
+  const date = formatDate(event.date, 'date');
 
   return (
     <Box className={`${className} border  drop-shadow`}>

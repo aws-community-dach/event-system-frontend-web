@@ -16,11 +16,11 @@ type ButtonType = {
 
 const colorClasses = {
   accent: 'border-accent bg-accent hover:bg-accent-dark',
-  secondary: 'border-gray-300 bg-gray-200 hover:bg-gray-300 text-dark',
-  info: 'border-info bg-info hover:bg-info-dark',
-  danger: 'border-danger bg-danger hover:bg-danger-dark',
-  warning: 'border-warning bg-warning hover:bg-warning-dark',
-  success: 'border-success bg-success hover:bg-success-dark',
+  secondary: 'text-dark border-gray-300 bg-gray-200 hover:bg-gray-300',
+  info: 'border-info bg-info hover:bg-info-600',
+  danger: 'border-danger bg-danger hover:bg-danger-600',
+  warning: 'border-warning bg-warning hover:bg-warning-600',
+  success: 'border-success bg-success hover:bg-success-600',
 };
 
 export default function Button({
