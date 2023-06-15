@@ -15,7 +15,9 @@ export default function EventFormModal({ eventId }: { eventId: string }) {
   };
 
   const submitCallback = () => {
-    setOpen(false);
+    setTimeout(() => {
+      setOpen(false);
+    }, 2000);
   };
 
   return (
