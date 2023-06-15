@@ -7,7 +7,7 @@ import FormInput from './FormInput';
 import { ParticipantService } from '@/service/events/ParticipantService';
 import { ParticipantFormType } from '@/types/ParticipantType';
 import Link from 'next/link';
-import { CheckCircleIcon } from '@heroicons/react/24/outline';
+import FormSuccessFeedback from './Feedback';
 
 type EventFormProps = {
   eventId: string;
@@ -38,15 +38,15 @@ export default function EventForm({
     form.reset();
     onSubmitCallback();
     setIsSubmitted(true);
+    setTimeout(() => {
+      setIsSubmitted(false);
+    }, 3000);
   };
 
   return (
     <Box className={className}>
       {isSubmitted ? (
-        <div className='w-full text-center mb-6'>
-          <CheckCircleIcon className='h-12 w-12 text-success mx-auto mt-4' />
-          <p>Erfolgreich angemeldet</p>
-        </div>
+        <FormSuccessFeedback>Erfolgreich angemeldet</FormSuccessFeedback>
       ) : (
         <form className='w-full' onSubmit={handleSubmit}>
           <div className='grid grid-cols-1 gap-x-6 gap-y-6'>
