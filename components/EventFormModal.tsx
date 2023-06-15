@@ -22,14 +22,14 @@ export default function EventFormModal({ eventId }: { eventId: string }) {
 
   return (
     <>
-      <Button className='w-full mt-4' onClick={() => setOpen(true)}>
+      <Button className='w-full' onClick={() => setOpen(true)}>
         Registrieren
       </Button>
 
       <Transition.Root show={open} as={Fragment}>
         <Dialog
           as='div'
-          className='fixed inset-0 z-10 overflow-y-auto'
+          className='fixed z-20 h-3/4 m-auto inset-x-0 inset-y-0 overflow-y-scroll'
           initialFocus={cancelButtonRef}
           onClose={() => setOpen(false)}
         >
