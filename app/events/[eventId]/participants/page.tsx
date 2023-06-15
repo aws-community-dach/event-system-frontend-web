@@ -13,7 +13,6 @@ export default async function Page({
   params: { eventId: string };
 }) {
   const participantList: ParticipantType[] = await getData(params.eventId);
-  console.log(participantList);
   return (
     <>
       {participantList?.map((participant) => (
