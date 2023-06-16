@@ -3,6 +3,7 @@ export type ParticipantType = {
   name: string;
   displayName: string;
   email: string;
+  token: string;
 };
 
 type ParticipantInputElementsType = HTMLFormControlsCollection & {
