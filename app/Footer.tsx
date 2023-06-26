@@ -5,7 +5,7 @@ export default function Footer() {
 
   return (
     <footer className='bg-dark text-white py-10 px-5 md:px-32'>
-      <div className='flex flex-wrap justify-between'>
+      <div className='flex flex-wrap justify-around'>
         <div className='w-full md:w-auto mb-6 md:mb-0 max-w-lg'>
           <p className='mb-1'>
             <strong>Responsible:</strong>
