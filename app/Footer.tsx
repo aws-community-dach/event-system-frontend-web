@@ -4,7 +4,7 @@ export default function Footer() {
   const url_dach = 'https://www.aws-community.de';
 
   return (
-    <footer className='bg-dark text-white py-10 px-5 md:px-32'>
+    <footer className='bg-dark text-white py-10 px-5'>
       <div className='flex flex-wrap justify-around'>
         <div className='w-full md:w-auto mb-6 md:mb-0 max-w-lg'>
           <p className='mb-1'>
