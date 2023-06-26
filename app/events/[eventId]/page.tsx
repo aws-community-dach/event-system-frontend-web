@@ -2,9 +2,9 @@ import { formatDate } from '@/app/utils';
 import Box from '@/components/Box';
 import { EventAgenda } from '@/components/EventAgenda';
 import EventFormModal from '@/components/EventFormModal';
-import EventForm from '@/components/EventsForm';
 import { H1, H2 } from '@/components/Headlines';
 import { IconWithText } from '@/components/IconWithText';
+import ParticipantForm from '@/components/ParticpantForm';
 import { EventService } from '@/service/events/EventService';
 import { EventType } from '@/types/EventType';
 import { CalendarIcon, ClockIcon, MapIcon } from '@heroicons/react/24/outline';
@@ -50,7 +50,7 @@ export default async function Page({
           </div>
 
           <div className='hidden lg:block self-start sticky top-2 col-span-1'>
-            <EventForm
+            <ParticipantForm
               eventId={params.eventId}
               className='border drop-shadow'
             />
