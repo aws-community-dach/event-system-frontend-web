@@ -19,7 +19,7 @@ export default function FormInput({
   ...props
 }: FormInputProps) {
   return (
-    <div className='my-6'>
+    <div className='lg:my-6'>
       {label && (
         <label htmlFor={id} className='block text-sm font-medium text-gray-700'>
           {label}
