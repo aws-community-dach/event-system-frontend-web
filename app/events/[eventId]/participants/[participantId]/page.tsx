@@ -16,9 +16,10 @@ export default async function Page({
     params.eventId,
     params.participantId,
   );
+  participant; // just to satisfy the linter
   return (
     <>
-      <div>{participant.email}</div>
+      <div>ಠ_ಠ</div>
     </>
   );
 }
