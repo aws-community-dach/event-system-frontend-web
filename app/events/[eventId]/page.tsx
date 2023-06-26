@@ -4,7 +4,7 @@ import { EventAgenda } from '@/components/EventAgenda';
 import EventFormModal from '@/components/EventFormModal';
 import { H1, H2 } from '@/components/Headlines';
 import { IconWithText } from '@/components/IconWithText';
-import ParticipantForm from '@/components/ParticpantForm';
+import ParticipantFormCreate from '@/components/ParticipantFormCreate';
 import { EventService } from '@/service/events/EventService';
 import { EventType } from '@/types/EventType';
 import { CalendarIcon, ClockIcon, MapIcon } from '@heroicons/react/24/outline';
@@ -50,10 +50,12 @@ export default async function Page({
           </div>
 
           <div className='hidden lg:block self-start sticky top-2 col-span-1'>
-            <ParticipantForm
-              eventId={params.eventId}
-              className='border drop-shadow'
-            />
+            <Box className='border drop-shadow'>
+              <ParticipantFormCreate
+                eventId={params.eventId}
+                className='w-full'
+              />
+            </Box>
           </div>
         </div>
       </div>
