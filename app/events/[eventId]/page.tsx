@@ -28,7 +28,7 @@ export default async function Page({
       <div className='mb-auto'>
         <div className='grid grid-flow-row-dense lg:grid-cols-3 gap-4'>
           <div className='col-span-2'>
-            <Box className='h-screen'>
+            <Box>
               <div className='grid gap-2'>
                 <H1>{event.name}</H1>
                 <div className='mb-12 text-gray-500 flex flex-col space-y-2'>
@@ -57,7 +57,7 @@ export default async function Page({
           </div>
         </div>
       </div>
-      <div className='lg:hidden bg-white py-4 px-8 border border fixed inset-x-0 bottom-0 left-0'>
+      <div className='lg:hidden bg-white py-4 px-8 sticky inset-x-0 bottom-0 left-0'>
         <EventFormModal eventId={params.eventId} />
       </div>
     </div>
