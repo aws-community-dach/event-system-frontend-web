@@ -18,3 +18,11 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+footer a {
+  @apply text-accent;
+}
+
+footer a:hover {
+  @apply text-accent-dark;
+}
