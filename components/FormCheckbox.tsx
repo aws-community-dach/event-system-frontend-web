@@ -1,5 +1,3 @@
-import React from 'react';
-
 type FormCheckboxProps = {
   label?: string;
   id?: string;
