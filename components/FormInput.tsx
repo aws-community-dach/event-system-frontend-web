@@ -16,12 +16,16 @@ export default function FormInput({
   placeholder,
   required,
   children,
+  className = '',
   ...props
 }: FormInputProps) {
   return (
-    <div className='lg:my-6'>
+    <div className={className}>
       {label && (
-        <label htmlFor={id} className='block text-sm font-medium text-gray-700'>
+        <label
+          htmlFor={id}
+          className='block tracking-wide text-gray-700 text-xs font-bold mb-2'
+        >
           {label}
         </label>
       )}

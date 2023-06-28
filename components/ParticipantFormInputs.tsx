@@ -54,9 +54,10 @@ export default function ParticipantFormInputs({
 
   return (
     <div>
-      <form className='w-full' onSubmit={handleSubmit}>
+      <form className='w-full grid lg:gap-y-6' onSubmit={handleSubmit}>
         <FormInput
           type='text'
+          label='Anzeigename'
           value={data.displayName}
           onChange={(e) =>
             handleChange({
@@ -64,26 +65,25 @@ export default function ParticipantFormInputs({
               displayName: e.target.value,
             })
           }
-          placeholder='Your display name'
           required
         />
 
         <FormInput
           type='text'
+          label='Name'
           value={data.name}
           onChange={(e) => handleChange({ ...data, name: e.target.value })}
-          placeholder='Your name'
           required
         />
 
-        {!isNewParticipant && (
+        {isNewParticipant && (
           <FormInput
             id='email'
             name='email'
+            label='E-Mail'
             type='email'
             value={data.email}
             onChange={(e) => handleChange({ ...data, email: e.target.value })}
-            placeholder='E-Mail'
             autoComplete='email'
             required
           />
@@ -91,6 +91,7 @@ export default function ParticipantFormInputs({
 
         <FormInput
           as='select'
+          label='T-Shirt Größe'
           value={data.customData.tShirtSize}
           onChange={(e) =>
             setData({
@@ -120,7 +121,7 @@ export default function ParticipantFormInputs({
         </FormInput>
 
         <FormCheckbox
-          label='Participation at the evening event'
+          label='Beteiligung am Event?'
           id='eventParticipation'
           checked={data.customData.eventParticipation}
           onChange={(isChecked) =>
@@ -135,6 +136,7 @@ export default function ParticipantFormInputs({
         />
         <FormInput
           as='select'
+          label='Essenspräferenz'
           value={data.customData.foodPreference}
           onChange={(e) =>
             setData({
@@ -150,13 +152,14 @@ export default function ParticipantFormInputs({
           }
           required
         >
-          <option value='Vegetarian'>Vegetarian</option>
+          <option value='Vegetarian'>Vegetarisch</option>
           <option value='Vegan'>Vegan</option>
-          <option value='Meat'>Meat</option>
+          <option value='Meat'>Fleisch</option>
         </FormInput>
 
         <FormInput
           type='text'
+          label='Job Beschreibung'
           value={data.customData.jobDescription}
           onChange={(e) =>
             setData({
@@ -167,10 +170,10 @@ export default function ParticipantFormInputs({
               },
             })
           }
-          placeholder='Your job description'
         />
         <FormInput
           type='text'
+          label='Firma'
           value={data.customData.companyName}
           onChange={(e) =>
             setData({
@@ -181,10 +184,10 @@ export default function ParticipantFormInputs({
               },
             })
           }
-          placeholder='Your company name'
         />
         <FormInput
           as='select'
+          label='AWS Erfahrung'
           value={data.customData.awsExperience}
           onChange={(e) =>
             setData({
@@ -200,10 +203,10 @@ export default function ParticipantFormInputs({
             })
           }
         >
-          <option value='< 1 year'>{'< 1 year'}</option>
-          <option value='1-3 years'>1-3 years</option>
-          <option value='3-5 years'>3-5 years</option>
-          <option value='+5 years'>5+ years</option>
+          <option value='< 1 year'>{'< 1 Jahr'}</option>
+          <option value='1-3 years'>1-3 Jahre</option>
+          <option value='3-5 years'>3-5 Jahre</option>
+          <option value='+5 years'>5+ Jahre</option>
         </FormInput>
 
         {isNewParticipant && (

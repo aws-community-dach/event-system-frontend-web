@@ -3,6 +3,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useRef, useState } from 'react';
 import Button from './Button';
 import EventForm from './EventsForm';
+import ParticipantFormCreate from './ParticipantFormCreate';
 
 export default function EventFormModal({ eventId }: { eventId: string }) {
   const [open, setOpen] = useState(false);
@@ -59,10 +60,7 @@ export default function EventFormModal({ eventId }: { eventId: string }) {
               leaveTo='opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'
             >
               <div className='bg-white w-10/12 lg:w-1/2 rounded-lg px-4 pt-5 pb-4 overflow-hidden shadow-xl transform transition-all'>
-                <EventForm
-                  eventId={eventId}
-                  onSubmitCallback={submitCallback}
-                />
+                <ParticipantFormCreate eventId={eventId} className='md:p-4' />
               </div>
             </Transition.Child>
           </div>
