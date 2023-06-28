@@ -59,7 +59,7 @@ export default function EventsPage({ eventList }: { eventList: EventType[] }) {
             sidebarOpen ? 'block' : 'hidden'
           }`}
         >
-          <h2 className='font-semibold mb-4'>Standorte</h2>
+          <h4>Standorte</h4>
           {locations.map((location) => (
             <div key={location} className='mb-2 '>
               <input
