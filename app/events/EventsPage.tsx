@@ -42,10 +42,10 @@ export default function EventsPage({ eventList }: { eventList: EventType[] }) {
 
   return (
     <>
-      <div className='w-full flex flex-col md:flex-row bg-white rounded'>
+      <div className='w-full flex flex-col md:flex-row border  rounded'>
         <div className='md:hidden p-4 mb-2 ml-auto'>
           <Button
-            className={` ${sidebarOpen ? 'bg-primary-600' : ''}`}
+            className={` ${sidebarOpen ? 'bg-accent-600' : ''}`}
             onClick={() => setSidebarOpen(!sidebarOpen)}
           >
             <AdjustmentsHorizontalIcon
@@ -55,21 +55,22 @@ export default function EventsPage({ eventList }: { eventList: EventType[] }) {
           </Button>
         </div>
         <div
-          className={`w-full md:w-1/4 p-4 md:block ${
+          className={`w-full md:w-1/5 p-4 md:block ${
             sidebarOpen ? 'block' : 'hidden'
           }`}
         >
-          <h2 className='font-semibold mb-4'>Standorte</h2>
+          <h4>Standorte</h4>
           {locations.map((location) => (
-            <div key={location} className='mb-2'>
+            <div key={location} className='mb-2 '>
               <input
                 type='checkbox'
                 id={location}
+                className='cursor-pointer'
                 onChange={(e) =>
                   handleLocationCheckboxChange(location, e.target.checked)
                 }
               />
-              <label htmlFor={location} className='ml-2'>
+              <label htmlFor={location} className='ml-2 cursor-pointer'>
                 {location}
               </label>
             </div>
@@ -81,13 +82,16 @@ export default function EventsPage({ eventList }: { eventList: EventType[] }) {
               type='text'
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className='rounded py-2 px-3 w-full border-2'
+              className='rounded py-2 px-3 w-full border border-link hover:bg-polar'
               placeholder='Suche...'
             />
           </div>
 
           <div className='p-4 flex-1 overflow-y-auto'>
-            <EventCardList className='border-2' eventList={filteredEvents} />
+            <EventCardList
+              className='border  hover:bg-polar'
+              eventList={filteredEvents}
+            />
           </div>
         </div>
       </div>

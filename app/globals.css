@@ -2,19 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+@layer base {
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  html,
+  body {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  a {
+    @apply text-link transition;
+    text-decoration: none;
+  }
+
+  a:hover {
+    @apply text-link-500;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-black;
+  }
+
+  h1 {
+    @apply text-4xl py-4;
+  }
+  h2 {
+    @apply text-3xl py-3;
+  }
+  h3 {
+    @apply text-2xl py-2;
+  }
+  h4 {
+    @apply text-xl py-1;
+  }
+  h5 {
+    @apply text-lg py-1;
+  }
+
+  h6 {
+    @apply text-gray-500;
+  }
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+footer a {
+  @apply text-accent;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+footer a:hover {
+  @apply text-accent-dark;
 }

@@ -1,14 +1,14 @@
 'use client';
 
-import { Disclosure, Menu, Transition } from '@headlessui/react';
+import { Disclosure /* Menu, Transition */ } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Session } from 'next-auth';
-import { signOut } from 'next-auth/react';
-import { Fragment } from 'react';
-import SignIn from './auth/SignIn';
+// import { signOut } from 'next-auth/react'; // Commented out the signOut
+// import { Fragment } from 'react';
+// import SignIn from './auth/SignIn'; // Commented out the SignIn
 
 let navigation = [
   { name: 'Home', href: '/' },
@@ -22,6 +22,8 @@ function classNames(...classes: string[]) {
 export default function Nav({ session }: { session: Session | null }) {
   const pathname = usePathname();
 
+  session; // just to have it used
+
   const isCurrentHref = (itemHref: string): boolean => {
     if (itemHref === '/') {
       return pathname === itemHref;
@@ -29,7 +31,7 @@ export default function Nav({ session }: { session: Session | null }) {
     return pathname!.startsWith(itemHref);
   };
   return (
-    <Disclosure as='nav' className='bg-gray-800'>
+    <Disclosure as='nav' className='bg-dark'>
       {({ open }) => (
         <>
           <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
@@ -66,9 +68,9 @@ export default function Nav({ session }: { session: Session | null }) {
                   </div>
                 </div>
               </div>
+              {/* Commented out the user login part
               <div className='hidden md:block'>
                 <div className='ml-4 flex items-center md:ml-6'>
-                  {/* Profile dropdown */}
                   <Menu as='div' className='relative ml-3'>
                     <div>
                       {session?.user ? (
@@ -113,6 +115,7 @@ export default function Nav({ session }: { session: Session | null }) {
                   </Menu>
                 </div>
               </div>
+              */}
               <div className='-mr-2 flex md:hidden'>
                 {/* Mobile menu button */}
                 <Disclosure.Button className='inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
