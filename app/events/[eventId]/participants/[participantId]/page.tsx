@@ -1,5 +1,5 @@
-import ParticipantFormUpdate from '@/components/ParticipantFormUpdate';
 import { ErrorFeedback } from '@/components/Feedback';
+import ParticipantFormUpdate from '@/components/ParticipantFormUpdate';
 import { ParticipantService } from '@/service/events/ParticipantService';
 import { ParticipantType } from '@/types/ParticipantType';
 

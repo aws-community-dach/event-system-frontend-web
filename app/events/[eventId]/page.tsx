@@ -1,3 +1,4 @@
+import { CalendarIcon, ClockIcon, MapIcon } from '@heroicons/react/24/outline';
 import { formatDate } from '@/app/utils';
 import Box from '@/components/Box';
 import { EventAgenda } from '@/components/EventAgenda';
@@ -7,7 +8,6 @@ import { IconWithText } from '@/components/IconWithText';
 import ParticipantFormCreate from '@/components/ParticipantFormCreate';
 import { EventService } from '@/service/events/EventService';
 import { EventType } from '@/types/EventType';
-import { CalendarIcon, ClockIcon, MapIcon } from '@heroicons/react/24/outline';
 
 async function getEvent(eventId: string) {
   const res = await EventService.get(eventId);

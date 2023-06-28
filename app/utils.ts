@@ -48,11 +48,9 @@ export function formatDate(
         date,
       );
     case 'datetime':
-      return `${new Intl.DateTimeFormat(locale, formatOptions['date']).format(
+      return `${new Intl.DateTimeFormat(locale, formatOptions.date).format(
         date,
-      )} ${new Intl.DateTimeFormat(locale, formatOptions['time']).format(
-        date,
-      )}`;
+      )} ${new Intl.DateTimeFormat(locale, formatOptions.time).format(date)}`;
     case 'datetime-no-year':
       const dayAndMonth = new Intl.DateTimeFormat(locale, {
         day: '2-digit',
