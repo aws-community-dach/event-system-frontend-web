@@ -1,17 +1,17 @@
 type FormatType = 'time' | 'date' | 'datetime' | 'datetime-no-year';
 
 const formatOptions: { [key in FormatType]: Intl.DateTimeFormatOptions } = {
-  time: {
+  'time': {
     hour: '2-digit',
     minute: '2-digit',
     hour12: false,
   },
-  date: {
+  'date': {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',
   },
-  datetime: {
+  'datetime': {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',

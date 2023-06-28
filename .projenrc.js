@@ -53,12 +53,12 @@ project.tryFindFile('tailwind.config.json').obj = {
   theme: {
     extend: {
       colors: {
-        polar: '#fbfefe',
-        borderColor: {
+        'polar': '#fbfefe',
+        'borderColor': {
           DEFAULT: '#f1f3f3',
         },
         'accent-dark': '#ec7211',
-        accent: {
+        'accent': {
           DEFAULT: '#FF9900',
           50: '#fffbea',
           100: '#fff2c5',
@@ -72,7 +72,7 @@ project.tryFindFile('tailwind.config.json').obj = {
           900: '#7c310b',
           950: '#481700',
         },
-        dark: {
+        'dark': {
           DEFAULT: '#232F3E',
           50: '#f5f7fa',
           100: '#eaeef4',
@@ -86,7 +86,7 @@ project.tryFindFile('tailwind.config.json').obj = {
           900: '#2c3d4e',
           950: '#232f3e',
         },
-        link: {
+        'link': {
           DEFAULT: '#0972D3',
           50: '#edfbff',
           100: '#d6f5ff',
@@ -100,7 +100,7 @@ project.tryFindFile('tailwind.config.json').obj = {
           900: '#0e5a9a',
           950: '#0e375d',
         },
-        info: {
+        'info': {
           DEFAULT: '#3184C2',
           50: '#f2f8fd',
           100: '#e5eff9',
@@ -114,7 +114,7 @@ project.tryFindFile('tailwind.config.json').obj = {
           900: '#1c3e5e',
           950: '#13283e',
         },
-        success: {
+        'success': {
           DEFAULT: '#1D8102',
           50: '#fafff9',
           100: '#d9ffc5',
@@ -128,7 +128,7 @@ project.tryFindFile('tailwind.config.json').obj = {
           900: '#1c5a0d',
           950: '#083300',
         },
-        danger: {
+        'danger': {
           DEFAULT: '#D13212',
           50: '#fef8f7',
           100: '#fee6d6',
