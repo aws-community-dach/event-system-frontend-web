@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { ParticipantType } from '@/types/ParticipantType';
 import { ParticipantService } from '@/service/events/ParticipantService';
 import ParticipantFormInputs from './ParticipantFormInputs';
+import FormSuccessFeedback from './Feedback';
 
 export default function ParticipantFormUpdate({
   eventId,
@@ -17,6 +18,8 @@ export default function ParticipantFormUpdate({
 }) {
   const router = useRouter();
   const [data, setData] = useState<ParticipantType>(participantData);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
 
   useEffect(() => {
     if (participantData) {
@@ -27,13 +30,34 @@ export default function ParticipantFormUpdate({
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     await ParticipantService(eventId).update(participantData.id, data);
-    router.push(`/events/${eventId}`);
+    setIsSubmitted(true);
+    setTimeout(() => {
+      setIsSubmitted(false);
+      router.push(`/events/${eventId}`);
+    }, 3000);
   };
 
   const handleDelete = async () => {
     await ParticipantService(eventId).delete(participantData.id, {});
-    router.push(`/events/${eventId}`);
+
+    setIsDeleted(true);
+    setTimeout(() => {
+      setIsDeleted(false);
+      router.push(`/events/${eventId}`);
+    }, 3000);
   };
+
+  if (isDeleted) {
+    return (
+      <FormSuccessFeedback>Teilnahme erfolgreich gelöscht</FormSuccessFeedback>
+    );
+  }
+
+  if (isSubmitted) {
+    return (
+      <FormSuccessFeedback>Daten erfolgreich aktualisiert</FormSuccessFeedback>
+    );
+  }
 
   return (
     <div className={className}>

@@ -1,19 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { ParticipantType } from '@/types/ParticipantType';
 import { ParticipantService } from '@/service/events/ParticipantService';
 import ParticipantFormInputs from './ParticipantFormInputs';
+import FormSuccessFeedback from './Feedback';
 
 export default function ParticipantFormCreate({
   eventId,
   className = '',
+  onSubmit = () => {},
 }: {
   eventId: string;
   className?: string;
+  onSubmit?: () => void;
 }) {
-  const router = useRouter();
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [data, setData] = useState<ParticipantType>({
     id: 0,
     name: '',
@@ -32,18 +34,29 @@ export default function ParticipantFormCreate({
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     await ParticipantService(eventId).add('', data);
-    router.push(`/events/${eventId}`);
+    onSubmit();
+
+    setIsSubmitted(true);
+    setTimeout(() => {
+      setIsSubmitted(false);
+    }, 3000);
   };
 
   return (
-    <div className={className}>
-      <ParticipantFormInputs
-        participantData={data}
-        handleDataChange={setData}
-        handleSubmit={handleSubmit}
-        isNewParticipant={true}
-        eventId={eventId}
-      />
-    </div>
+    <>
+      {isSubmitted ? (
+        <FormSuccessFeedback>Erfolgreich angemeldet</FormSuccessFeedback>
+      ) : (
+        <div className={className}>
+          <ParticipantFormInputs
+            participantData={data}
+            handleDataChange={setData}
+            handleSubmit={handleSubmit}
+            isNewParticipant={true}
+            eventId={eventId}
+          />
+        </div>
+      )}
+    </>
   );
 }
