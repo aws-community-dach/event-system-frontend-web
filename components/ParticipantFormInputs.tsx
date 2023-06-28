@@ -54,7 +54,7 @@ export default function ParticipantFormInputs({
 
   return (
     <div>
-      <form className='w-full grid lg:gap-y-6' onSubmit={handleSubmit}>
+      <form className='w-full lg:space-y-6' onSubmit={handleSubmit}>
         <FormInput
           type='text'
           label='Anzeigename'

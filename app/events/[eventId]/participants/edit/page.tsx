@@ -26,7 +26,7 @@ export default function ParticipantUpdateForm({
     <>
       <h3>Registrierung aktualisieren</h3>
 
-      <form className='w-full' onSubmit={handleSubmit}>
+      <form className='w-full space-y-4' onSubmit={handleSubmit}>
         <FormInput
           type='email'
           label='E-Mail'
