@@ -16,7 +16,7 @@ export default function EventCard({
     <Box className={`${className} border drop-shadow`}>
       <div className='mt-3 sm:mt-0 grow pr-4'>
         <Link href={`/events/${event.id}`}>
-          <div className='text-2xl'>{event.name}</div>
+          <h2>{event.name}</h2>
           <div className='mt-2'>
             <p className='text-sm text-gray-500'>{event.summary}</p>
           </div>
