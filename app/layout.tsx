@@ -1,8 +1,8 @@
 import './globals.css';
 import { getServerSession } from 'next-auth/next';
+import Footer from './Footer';
 import Nav from './Nav';
 import { authOptions } from 'pages/api/auth/[...nextauth]';
-import Footer from './Footer';
 
 export default async function RootLayout({
   children,
