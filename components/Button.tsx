@@ -24,7 +24,7 @@ export default function Button({
   children,
   ...rest
 }: ButtonType) {
-  const colorClass = colorClasses[color] || colorClasses['accent'];
+  const colorClass = colorClasses[color] || colorClasses.accent;
 
   return (
     <button

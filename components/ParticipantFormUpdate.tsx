@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { ParticipantType } from '@/types/ParticipantType';
-import { ParticipantService } from '@/service/events/ParticipantService';
-import ParticipantFormInputs from './ParticipantFormInputs';
+import { useState, useEffect } from 'react';
 import FormSuccessFeedback from './Feedback';
+import ParticipantFormInputs from './ParticipantFormInputs';
+import { ParticipantService } from '@/service/events/ParticipantService';
+import { ParticipantType } from '@/types/ParticipantType';
 
 export default function ParticipantFormUpdate({
   eventId,

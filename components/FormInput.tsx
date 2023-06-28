@@ -4,9 +4,8 @@ import React from 'react';
 type InputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
 // prettier-ignore
 type SelectProps = React.DetailedHTMLProps<React.SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>;
-
-type FormInputProps = InputProps &
-  SelectProps & { as?: 'input' | 'select'; label?: string };
+// prettier-ignore
+type FormInputProps = InputProps & SelectProps & { as?: 'input' | 'select'; label?: string };
 
 export default function FormInput({
   as = 'input',

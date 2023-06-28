@@ -1,6 +1,6 @@
-import { formatDate } from '@/app/utils';
 import { CalendarIcon, ClockIcon, MapIcon } from '@heroicons/react/24/outline';
 import { IconWithText } from './IconWithText';
+import { formatDate } from '@/app/utils';
 
 export const EventDetails = ({
   date,

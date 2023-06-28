@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { ParticipantType } from '@/types/ParticipantType';
-import { ParticipantService } from '@/service/events/ParticipantService';
-import ParticipantFormInputs from './ParticipantFormInputs';
 import FormSuccessFeedback from './Feedback';
+import ParticipantFormInputs from './ParticipantFormInputs';
+import { ParticipantService } from '@/service/events/ParticipantService';
+import { ParticipantType } from '@/types/ParticipantType';
 
 export default function ParticipantFormCreate({
   eventId,

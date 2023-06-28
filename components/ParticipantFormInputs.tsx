@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { ParticipantType } from '@/types/ParticipantType';
-import FormInput from '@/components/FormInput';
-import FormCheckbox from '@/components/FormCheckbox';
-import Button from './Button';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import Button from './Button';
+import FormCheckbox from '@/components/FormCheckbox';
+import FormInput from '@/components/FormInput';
+import { ParticipantType } from '@/types/ParticipantType';
 
 type FormInputsProps = {
   participantData?: ParticipantType;

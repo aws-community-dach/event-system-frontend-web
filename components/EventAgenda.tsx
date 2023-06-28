@@ -1,8 +1,8 @@
-import { formatDate } from '@/app/utils';
-import { AgendaType } from '@/types/AgendaType';
 import { ClockIcon } from '@heroicons/react/24/outline';
 import { H5 } from './Headlines';
 import { IconWithText } from './IconWithText';
+import { formatDate } from '@/app/utils';
+import { AgendaType } from '@/types/AgendaType';
 
 export const EventAgenda = ({ agendaList }: { agendaList: AgendaType[] }) => {
   const formatType = 'time';
