@@ -1,5 +1,4 @@
 import { ClockIcon } from '@heroicons/react/24/outline';
-import { H5 } from './Headlines';
 import { IconWithText } from './IconWithText';
 import { formatDate } from '@/app/utils';
 import { AgendaType } from '@/types/AgendaType';
@@ -12,7 +11,7 @@ export const EventAgenda = ({ agendaList }: { agendaList: AgendaType[] }) => {
       {agendaList.map((agenda) => {
         return (
           <div className='bg-gray-50 rounded p-6' key={agenda.name}>
-            <H5>{agenda.name}</H5>
+            <h5>{agenda.name}</h5>
             <IconWithText Icon={ClockIcon}>
               {formatDate(agenda.start, formatType)}{' '}
               {agenda.end ? ` - ${formatDate(agenda.end, formatType)}` : ''}
