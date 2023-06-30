@@ -3,7 +3,6 @@ import { formatDate } from '@/app/utils';
 import Box from '@/components/Box';
 import { EventAgenda } from '@/components/EventAgenda';
 import EventFormModal from '@/components/EventFormModal';
-import { H1, H2 } from '@/components/Headlines';
 import { IconWithText } from '@/components/IconWithText';
 import ParticipantFormCreate from '@/components/ParticipantFormCreate';
 import { EventService } from '@/service/events/EventService';
@@ -30,18 +29,18 @@ export default async function Page({
           <div className='col-span-2'>
             <Box>
               <div className='grid gap-2'>
-                <H1>{event.name}</H1>
+                <h1>{event.name}</h1>
                 <div className='mb-12 text-gray-500 flex flex-col space-y-2'>
                   <IconWithText Icon={CalendarIcon}>{eventDate}</IconWithText>
                   <IconWithText Icon={ClockIcon}>{eventTime}</IconWithText>
                   <IconWithText Icon={MapIcon}>{event.location}</IconWithText>
                 </div>
-                <H2>Über das Event</H2>
+                <h2>About the event</h2>
                 <div>{event.summary}</div>
 
                 {event.agenda && (
                   <div>
-                    <H2>Agenda</H2>
+                    <h2>Agenda</h2>
                     <EventAgenda agendaList={event.agenda} />
                   </div>
                 )}

@@ -24,11 +24,7 @@ export default async function Page({
   const token = searchParams.token;
 
   if (!token) {
-    return (
-      <ErrorFeedback title='Kein Token'>
-        Es wurde leider kein Token angegeben
-      </ErrorFeedback>
-    );
+    return <ErrorFeedback title='No Token'>No token provided</ErrorFeedback>;
   }
 
   const participant: ParticipantType = await getData(
@@ -40,10 +36,10 @@ export default async function Page({
   if (participant === null) {
     return (
       <>
-        <ErrorFeedback title='Teilnehmer nicht gefunden'>
-          <p>Bitte prüfe deine Eingaben und versuche es erneut.</p>
+        <ErrorFeedback title='Participant not found'>
+          <p>Nothing found, please try again</p>
           <div className='mt-6'>
-            <a href={`/events/${params.eventId}/participants/edit`}>Zurück</a>
+            <a href={`/events/${params.eventId}/participants/edit`}>Back</a>
           </div>
         </ErrorFeedback>
       </>

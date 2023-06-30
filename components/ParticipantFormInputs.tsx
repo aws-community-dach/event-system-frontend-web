@@ -32,7 +32,7 @@ export default function ParticipantFormInputs({
       email: '',
       customData: {
         tShirtSize: 'm',
-        eventParticipation: false,
+        eveningEventParticipation: false,
         foodPreference: 'Meat',
         jobDescription: '',
         companyName: '',
@@ -57,7 +57,7 @@ export default function ParticipantFormInputs({
       <form className='w-full lg:space-y-6' onSubmit={handleSubmit}>
         <FormInput
           type='text'
-          label='Anzeigename'
+          label='Displayname'
           value={data.displayName}
           onChange={(e) =>
             handleChange({
@@ -91,7 +91,7 @@ export default function ParticipantFormInputs({
 
         <FormInput
           as='select'
-          label='T-Shirt Größe'
+          label='Shirt size'
           value={data.customData.tShirtSize}
           onChange={(e) =>
             setData({
@@ -121,22 +121,22 @@ export default function ParticipantFormInputs({
         </FormInput>
 
         <FormCheckbox
-          label='Beteiligung am Event?'
-          id='eventParticipation'
-          checked={data.customData.eventParticipation}
+          label='Participation at the evening event'
+          id='eveningEventParticipation'
+          checked={data.customData.eveningEventParticipation}
           onChange={(isChecked) =>
             setData({
               ...data,
               customData: {
                 ...data.customData,
-                eventParticipation: isChecked,
+                eveningEventParticipation: isChecked,
               },
             })
           }
         />
         <FormInput
           as='select'
-          label='Essenspräferenz'
+          label='Food preference'
           value={data.customData.foodPreference}
           onChange={(e) =>
             setData({
@@ -152,14 +152,14 @@ export default function ParticipantFormInputs({
           }
           required
         >
-          <option value='Vegetarian'>Vegetarisch</option>
+          <option value='Vegetarian'>Vegetarian</option>
           <option value='Vegan'>Vegan</option>
-          <option value='Meat'>Fleisch</option>
+          <option value='Meat'>Meat</option>
         </FormInput>
 
         <FormInput
           type='text'
-          label='Job Beschreibung'
+          label='Job description'
           value={data.customData.jobDescription}
           onChange={(e) =>
             setData({
@@ -173,7 +173,7 @@ export default function ParticipantFormInputs({
         />
         <FormInput
           type='text'
-          label='Firma'
+          label='Company'
           value={data.customData.companyName}
           onChange={(e) =>
             setData({
@@ -187,7 +187,7 @@ export default function ParticipantFormInputs({
         />
         <FormInput
           as='select'
-          label='AWS Erfahrung'
+          label='AWS experience'
           value={data.customData.awsExperience}
           onChange={(e) =>
             setData({
@@ -203,31 +203,31 @@ export default function ParticipantFormInputs({
             })
           }
         >
-          <option value='< 1 year'>{'< 1 Jahr'}</option>
-          <option value='1-3 years'>1-3 Jahre</option>
-          <option value='3-5 years'>3-5 Jahre</option>
-          <option value='+5 years'>5+ Jahre</option>
+          <option value='< 1 year'>{'< 1 year'}</option>
+          <option value='1-3 years'>1-3 years</option>
+          <option value='3-5 years'>3-5 years</option>
+          <option value='+5 years'>5+ years</option>
         </FormInput>
 
         {isNewParticipant && (
           <>
             <p className='mt-4 text-sm leading-6 text-gray-600'>
-              Es gelten die Datenschutzbestimmungen
+              The privacy policy applies
             </p>
             <div className='mt-6 flex items-center justify-end gap-x-6'>
               <Button className='w-full' type='submit'>
-                Registrieren
+                Register
               </Button>
             </div>
             <div className='mt-5'>
-              <div>Bereits registiert?</div>
+              <div>Already registered?</div>
               <div>
                 <Link
                   className='text-link'
                   href={`/events/${eventId}/participants/edit`}
                 >
                   <Button type='button' className='w-full' color='secondary'>
-                    Daten ändern
+                    Update data
                   </Button>
                 </Link>
               </div>
