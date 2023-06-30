@@ -47,10 +47,10 @@ export default function ParticipantFormInputs({
     }
   }, [participantData]);
 
-  const handleChange = (newData: ParticipantType) => {
-    setData(newData);
-    handleDataChange(newData);
-  };
+  useEffect(() => {
+    handleDataChange(data);
+    console.log(data);
+  }, [data, handleDataChange]);
 
   return (
     <div>
@@ -60,7 +60,7 @@ export default function ParticipantFormInputs({
           label='Displayname'
           value={data.displayName}
           onChange={(e) =>
-            handleChange({
+            setData({
               ...data,
               displayName: e.target.value,
             })
@@ -72,7 +72,7 @@ export default function ParticipantFormInputs({
           type='text'
           label='Name'
           value={data.name}
-          onChange={(e) => handleChange({ ...data, name: e.target.value })}
+          onChange={(e) => setData({ ...data, name: e.target.value })}
           required
         />
 
@@ -83,7 +83,7 @@ export default function ParticipantFormInputs({
             label='E-Mail'
             type='email'
             value={data.email}
-            onChange={(e) => handleChange({ ...data, email: e.target.value })}
+            onChange={(e) => setData({ ...data, email: e.target.value })}
             autoComplete='email'
             required
           />
