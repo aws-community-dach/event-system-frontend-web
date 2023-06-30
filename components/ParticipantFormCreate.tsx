@@ -23,7 +23,7 @@ export default function ParticipantFormCreate({
     email: '',
     customData: {
       tShirtSize: 'm',
-      eventParticipation: false,
+      eveningEventParticipation: false,
       foodPreference: 'Meat',
       jobDescription: '',
       companyName: '',

@@ -5,7 +5,7 @@ export type ParticipantType = {
   email: string;
   customData: {
     tShirtSize: 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
-    eventParticipation: boolean;
+    eveningEventParticipation: boolean;
     foodPreference: 'Vegan' | 'Vegetarian' | 'Meat';
     jobDescription?: string;
     companyName?: string;
@@ -18,7 +18,7 @@ type ParticipantInputElementsType = HTMLFormControlsCollection & {
   displayName: HTMLInputElement;
   email: HTMLInputElement;
   tShirtSize: HTMLSelectElement;
-  eventParticipation: HTMLSelectElement;
+  eveningEventParticipation: HTMLSelectElement;
   foodPreference: HTMLSelectElement;
   jobDescription?: HTMLInputElement;
   companyName?: HTMLInputElement;

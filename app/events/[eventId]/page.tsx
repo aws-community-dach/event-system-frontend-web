@@ -36,7 +36,7 @@ export default async function Page({
                   <IconWithText Icon={ClockIcon}>{eventTime}</IconWithText>
                   <IconWithText Icon={MapIcon}>{event.location}</IconWithText>
                 </div>
-                <H2>Über das Event</H2>
+                <H2>About the event</H2>
                 <div>{event.summary}</div>
 
                 {event.agenda && (

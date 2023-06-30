@@ -24,7 +24,7 @@ export default function ParticipantUpdateForm({
 
   return (
     <>
-      <h3>Registrierung aktualisieren</h3>
+      <h3>Update your data</h3>
 
       <form className='w-full space-y-4' onSubmit={handleSubmit}>
         <FormInput
