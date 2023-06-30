@@ -25,7 +25,7 @@ export default function FormInput({
           htmlFor={id}
           className='block tracking-wide text-gray-700 text-xs font-bold mb-2'
         >
-          {label}
+          {label} {required && <span className='text-danger'>*</span>}
         </label>
       )}
       <div className='mt-2'>
