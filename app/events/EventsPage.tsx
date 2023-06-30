@@ -83,7 +83,7 @@ export default function EventsPage({ eventList }: { eventList: EventType[] }) {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className='rounded py-2 px-3 w-full border border-link hover:bg-polar'
-              placeholder='Suche...'
+              placeholder='Search...'
             />
           </div>
 
