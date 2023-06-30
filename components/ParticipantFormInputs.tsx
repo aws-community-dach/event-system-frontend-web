@@ -49,7 +49,6 @@ export default function ParticipantFormInputs({
 
   useEffect(() => {
     handleDataChange(data);
-    console.log(data);
   }, [data, handleDataChange]);
 
   return (
