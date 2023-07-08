@@ -49,13 +49,13 @@ export default function ParticipantFormUpdate({
 
   if (isDeleted) {
     return (
-      <FormSuccessFeedback>Teilnahme erfolgreich gelöscht</FormSuccessFeedback>
+      <FormSuccessFeedback>Deletion successful!</FormSuccessFeedback>
     );
   }
 
   if (isSubmitted) {
     return (
-      <FormSuccessFeedback>Daten erfolgreich aktualisiert</FormSuccessFeedback>
+      <FormSuccessFeedback>Update successful!</FormSuccessFeedback>
     );
   }
 

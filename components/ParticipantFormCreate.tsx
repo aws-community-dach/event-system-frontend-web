@@ -22,7 +22,7 @@ export default function ParticipantFormCreate({
     displayName: '',
     email: '',
     customData: {
-      tShirtSize: 'm',
+      tShirtSize: 'l',
       eveningEventParticipation: false,
       foodPreference: 'Meat',
       jobDescription: '',
@@ -45,7 +45,7 @@ export default function ParticipantFormCreate({
   return (
     <>
       {isSubmitted ? (
-        <FormSuccessFeedback>Erfolgreich angemeldet</FormSuccessFeedback>
+        <FormSuccessFeedback>Registration successful!</FormSuccessFeedback>
       ) : (
         <div className={className}>
           <ParticipantFormInputs
