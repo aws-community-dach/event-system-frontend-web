@@ -31,7 +31,7 @@ export default function ParticipantFormUpdate({
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    await ParticipantService(eventId).update(`${participantData.id}?token=${token}`, data);
+    await ParticipantService(eventId).update(`${participantData.email}?token=${token}`, data);
     setIsSubmitted(true);
     setTimeout(() => {
       setIsSubmitted(false);
@@ -40,7 +40,7 @@ export default function ParticipantFormUpdate({
   };
 
   const handleDelete = async () => {
-    await ParticipantService(eventId).delete(`${participantData.id}?token=${token}`, {});
+    await ParticipantService(eventId).delete(`${participantData.email}?token=${token}`, {});
 
     setIsDeleted(true);
     setTimeout(() => {

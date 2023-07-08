@@ -17,7 +17,6 @@ export default function ParticipantFormCreate({
 }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [data, setData] = useState<ParticipantType>({
-    id: 0,
     name: '',
     displayName: '',
     email: '',

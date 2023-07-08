@@ -26,7 +26,6 @@ export default function ParticipantFormInputs({
 }: FormInputsProps) {
   const [data, setData] = useState<ParticipantType>(
     participantData || {
-      id: 0,
       name: '',
       displayName: '',
       email: '',
