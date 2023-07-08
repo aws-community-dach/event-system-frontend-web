@@ -56,7 +56,7 @@ export default function ParticipantFormInputs({
       <form className='w-full lg:space-y-6' onSubmit={handleSubmit}>
         <FormInput
           type='text'
-          label='Displayname'
+          label='Name on badge'
           value={data.displayName}
           onChange={(e) =>
             setData({
