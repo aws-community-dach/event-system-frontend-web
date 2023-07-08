@@ -31,7 +31,7 @@ export default function ParticipantFormInputs({
       displayName: '',
       email: '',
       customData: {
-        tShirtSize: 'lm',
+        tShirtSize: 'l',
         eveningEventParticipation: false,
         foodPreference: 'Meat',
         jobDescription: '',
