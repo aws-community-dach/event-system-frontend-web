@@ -53,6 +53,7 @@ export default async function Page({
         <ParticipantFormUpdate
           eventId={params.eventId}
           participantData={participant}
+          token={token}
         />
       </>
     </>
