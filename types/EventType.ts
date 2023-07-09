@@ -5,6 +5,6 @@ export type EventType = {
   name: string;
   date: string;
   location: string;
-  summary: string;
+  description: string;
   agenda: AgendaType[];
 };

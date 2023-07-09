@@ -36,7 +36,7 @@ export default async function Page({
                   <IconWithText Icon={MapIcon}>{event.location}</IconWithText>
                 </div>
                 <h2>About the event</h2>
-                <div>{event.summary}</div>
+                <div>{event.description}</div>
 
                 {event.agenda && (
                   <div>
