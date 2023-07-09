@@ -21,8 +21,8 @@ export default function ParticipantFormInputs({
   participantData,
   isNewParticipant = false,
   handleDataChange,
-  handleSubmit = () => {},
-  handleDelete = () => {},
+  handleSubmit = () => { },
+  handleDelete = () => { },
 }: FormInputsProps) {
   const [data, setData] = useState<ParticipantType>(
     participantData || {
@@ -97,9 +97,13 @@ export default function ParticipantFormInputs({
               customData: {
                 ...data.customData,
                 tShirtSize: e.target.value as
-                  | 'm'
+                  | 'fxs'
+                  | 'fs'
+                  | 'fm'
+                  | 'fl'
                   | 'xs'
                   | 's'
+                  | 'm'
                   | 'l'
                   | 'xl'
                   | 'xxl'
@@ -109,6 +113,10 @@ export default function ParticipantFormInputs({
           }
           required
         >
+          <option value='fxs'>XS (female cut)</option>
+          <option value='fs'>S (female cut)</option>
+          <option value='fm'>M (female cut)</option>
+          <option value='fl'>L (female cut)</option>
           <option value='xs'>XS</option>
           <option value='s'>S</option>
           <option value='m'>M</option>
@@ -210,7 +218,7 @@ export default function ParticipantFormInputs({
         {isNewParticipant && (
           <>
             <p className='mt-4 text-sm leading-6 text-gray-600'>
-              The privacy policy applies
+              The <a href="https://www.aws-community.de/privacy" target='_blank'>privacy policy</a> applies
             </p>
             <div className='mt-6 flex items-center justify-end gap-x-6'>
               <Button className='w-full' type='submit'>

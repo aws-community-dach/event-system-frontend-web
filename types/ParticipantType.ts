@@ -3,7 +3,7 @@ export type ParticipantType = {
   displayName: string;
   email: string;
   customData: {
-    tShirtSize: 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
+    tShirtSize: 'fxs' | 'fs' | 'fm' | 'fl' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
     eveningEventParticipation: boolean;
     foodPreference: 'Vegan' | 'Vegetarian' | 'Meat';
     jobDescription?: string;

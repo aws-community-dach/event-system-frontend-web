@@ -18,7 +18,7 @@ export default function EventCard({
         <Link href={`/events/${event.id}`}>
           <h3>{event.name}</h3>
           <div className='mt-2'>
-            <p className='text-sm text-gray-500'>{event.summary}</p>
+            <p className='text-sm text-gray-500'>{event.description}</p>
           </div>
         </Link>
       </div>
