@@ -33,6 +33,7 @@ jspm_packages/
 .env.local
 .vscode
 .DS_Store
+.sentryclirc
 !/.projenrc.js
 !/.github/workflows/build.yml
 !/.github/workflows/upgrade.yml
