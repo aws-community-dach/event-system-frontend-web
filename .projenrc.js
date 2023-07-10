@@ -11,7 +11,7 @@ const project = new web.NextJsTypeScriptProject({
     mergify: false,
     // projenCredentials: GithubCredentials.fromApp(),
   },
-  gitignore: ['.env.local', '.vscode', '.DS_Store'],
+  gitignore: ['.env.local', '.vscode', '.DS_Store', '.sentryclirc'],
   deps: [
     'swr',
     '@next/font',
@@ -19,6 +19,7 @@ const project = new web.NextJsTypeScriptProject({
     'axios',
     '@headlessui/react',
     '@heroicons/react',
+    '@sentry/nextjs',
   ],
   eslint: true,
   eslintOptions: {

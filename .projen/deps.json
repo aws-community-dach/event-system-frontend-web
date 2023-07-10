@@ -66,6 +66,10 @@
       "type": "runtime"
     },
     {
+      "name": "@sentry/nextjs",
+      "type": "runtime"
+    },
+    {
       "name": "autoprefixer",
       "type": "runtime"
     },
