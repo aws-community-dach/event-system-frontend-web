@@ -56,6 +56,7 @@ export default function ParticipantFormInputs({
         <FormInput
           type='text'
           label='Name on badge'
+          placeholder='Max'
           value={data.displayName}
           onChange={(e) =>
             setData({
@@ -69,6 +70,7 @@ export default function ParticipantFormInputs({
         <FormInput
           type='text'
           label='Name'
+          placeholder='Max Mustermann'
           value={data.name}
           onChange={(e) => setData({ ...data, name: e.target.value })}
           required
@@ -79,6 +81,7 @@ export default function ParticipantFormInputs({
             id='email'
             name='email'
             label='E-Mail'
+            placeholder='max.mustermann@company.de'
             type='email'
             value={data.email}
             onChange={(e) => setData({ ...data, email: e.target.value })}
@@ -166,6 +169,7 @@ export default function ParticipantFormInputs({
         <FormInput
           type='text'
           label='Job description'
+          placeholder='Cloud Engineer'
           value={data.customData.jobDescription}
           onChange={(e) =>
             setData({
@@ -180,6 +184,7 @@ export default function ParticipantFormInputs({
         <FormInput
           type='text'
           label='Company'
+          placeholder='Example GmbH'
           value={data.customData.companyName}
           onChange={(e) =>
             setData({
