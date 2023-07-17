@@ -21,8 +21,8 @@ export default function ParticipantFormInputs({
   participantData,
   isNewParticipant = false,
   handleDataChange,
-  handleSubmit = () => { },
-  handleDelete = () => { },
+  handleSubmit = () => {},
+  handleDelete = () => {},
 }: FormInputsProps) {
   const [data, setData] = useState<ParticipantType>(
     participantData || {
@@ -33,6 +33,7 @@ export default function ParticipantFormInputs({
         tShirtSize: 'l',
         eveningEventParticipation: false,
         foodPreference: 'Meat',
+        userGroup: '',
         jobDescription: '',
         companyName: '',
         awsExperience: '< 1 year',
@@ -129,20 +130,6 @@ export default function ParticipantFormInputs({
           <option value='xxxl'>XXXL</option>
         </FormInput>
 
-        <FormCheckbox
-          label='Participation at the evening event'
-          id='eveningEventParticipation'
-          checked={data.customData.eveningEventParticipation}
-          onChange={(isChecked) =>
-            setData({
-              ...data,
-              customData: {
-                ...data.customData,
-                eveningEventParticipation: isChecked,
-              },
-            })
-          }
-        />
         <FormInput
           as='select'
           label='Food preference'
@@ -166,6 +153,34 @@ export default function ParticipantFormInputs({
           <option value='Meat'>Meat</option>
         </FormInput>
 
+        <FormCheckbox
+          label='Participation at the evening event'
+          id='eveningEventParticipation'
+          checked={data.customData.eveningEventParticipation}
+          onChange={(isChecked) =>
+            setData({
+              ...data,
+              customData: {
+                ...data.customData,
+                eveningEventParticipation: isChecked,
+              },
+            })
+          }
+        />
+        <FormInput
+          type='text'
+          label='User Group'
+          value={data.customData.userGroup}
+          onChange={(e) =>
+            setData({
+              ...data,
+              customData: {
+                ...data.customData,
+                userGroup: e.target.value,
+              },
+            })
+          }
+        />
         <FormInput
           type='text'
           label='Job description'
@@ -223,7 +238,11 @@ export default function ParticipantFormInputs({
         {isNewParticipant && (
           <>
             <p className='mt-4 text-sm leading-6 text-gray-600'>
-              The <a href="https://www.aws-community.de/privacy" target='_blank'>privacy policy</a> applies
+              The{' '}
+              <a href='https://www.aws-community.de/privacy' target='_blank'>
+                privacy policy
+              </a>{' '}
+              applies
             </p>
             <div className='mt-6 flex items-center justify-end gap-x-6'>
               <Button className='w-full' type='submit'>
