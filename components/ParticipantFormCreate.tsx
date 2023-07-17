@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import FormSuccessFeedback from './Feedback';
+import { FormFailedFeedback, FormSuccessFeedback } from './Feedback';
 import ParticipantFormInputs from './ParticipantFormInputs';
 import { ParticipantService } from '@/service/events/ParticipantService';
 import { ParticipantType } from '@/types/ParticipantType';
@@ -16,6 +16,7 @@ export default function ParticipantFormCreate({
   onSubmit?: () => void;
 }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isFailed, setIsFailed] = useState(false);
   const [data, setData] = useState<ParticipantType>({
     name: '',
     displayName: '',
@@ -24,6 +25,7 @@ export default function ParticipantFormCreate({
       tShirtSize: 'l',
       eveningEventParticipation: false,
       foodPreference: 'Meat',
+      userGroup: '',
       jobDescription: '',
       companyName: '',
       awsExperience: '< 1 year',
@@ -32,7 +34,15 @@ export default function ParticipantFormCreate({
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    await ParticipantService(eventId).add('', data);
+    try {
+      await ParticipantService(eventId).add('', data);
+    } catch (error) {
+      if (error.code === 'ERR_BAD_RESPONSE') {
+        setIsFailed(true);
+        return;
+      }
+    }
+
     onSubmit();
 
     setIsSubmitted(true);
@@ -42,20 +52,27 @@ export default function ParticipantFormCreate({
   };
 
   return (
-    <>
-      {isSubmitted ? (
-        <FormSuccessFeedback>Registration successful!</FormSuccessFeedback>
-      ) : (
-        <div className={className}>
-          <ParticipantFormInputs
-            participantData={data}
-            handleDataChange={setData}
-            handleSubmit={handleSubmit}
-            isNewParticipant={true}
-            eventId={eventId}
-          />
+    <div className='w-full'>
+      {isFailed && (
+        <div className=''>
+          <FormFailedFeedback>E-Mail already registered</FormFailedFeedback>
         </div>
       )}
-    </>
+      {isSubmitted ? (
+        <FormSuccessFeedback>You are registered!</FormSuccessFeedback>
+      ) : (
+        <>
+          <div className={className}>
+            <ParticipantFormInputs
+              participantData={data}
+              handleDataChange={setData}
+              handleSubmit={handleSubmit}
+              isNewParticipant={true}
+              eventId={eventId}
+            />
+          </div>
+        </>
+      )}
+    </div>
   );
 }
