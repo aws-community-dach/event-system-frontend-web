@@ -6,18 +6,9 @@ import ParticipantFormInputs from './ParticipantFormInputs';
 import { ParticipantService } from '@/service/events/ParticipantService';
 import { ParticipantType } from '@/types/ParticipantType';
 
-export default function ParticipantFormCreate({
-  eventId,
-  className = '',
-  onSubmit = () => {},
-}: {
-  eventId: string;
-  className?: string;
-  onSubmit?: () => void;
-}) {
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [failedMessage, setFailedMessage] = useState('');
-  const [data, setData] = useState<ParticipantType>({
+// Function to get the initial state
+function getInitialState(): ParticipantType {
+  return {
     name: '',
     displayName: '',
     email: '',
@@ -30,7 +21,21 @@ export default function ParticipantFormCreate({
       companyName: '',
       awsExperience: '',
     },
-  });
+  };
+}
+
+export default function ParticipantFormCreate({
+  eventId,
+  className = '',
+  onSubmit = () => {},
+}: {
+  eventId: string;
+  className?: string;
+  onSubmit?: () => void;
+}) {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [failedMessage, setFailedMessage] = useState('');
+  const [data, setData] = useState<ParticipantType>(getInitialState);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -64,6 +69,9 @@ export default function ParticipantFormCreate({
     onSubmit();
 
     setIsSubmitted(true);
+    setData(getInitialState());
+    event.currentTarget.reset();
+
     setTimeout(() => {
       setIsSubmitted(false);
     }, 3000);
