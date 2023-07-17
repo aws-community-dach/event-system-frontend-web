@@ -34,14 +34,26 @@ export default function ParticipantFormCreate({
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     try {
       await ParticipantService(eventId).add('', data);
     } catch (error) {
       let msg = 'Something went wrong, please try again later.';
-      if (error.name === 'ConditionalCheckFailedException') {
-        msg =
-          'Registration failed. Please check your information and try again.';
+
+      switch (error.status) {
+        case 400:
+          msg = 'Please check your data and try again.';
+          break;
+        case 401:
+          msg = 'You need to login to perform this operation.';
+          break;
+        case 500:
+          msg = 'There was a problem with the server. Please try again later.';
+          break;
+        default:
+          break;
       }
+
       setFailedMessage(msg);
       setTimeout(() => {
         setFailedMessage('');
