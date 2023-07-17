@@ -6,9 +6,15 @@ export type ParticipantType = {
     tShirtSize: 'fxs' | 'fs' | 'fm' | 'fl' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
     eveningEventParticipation: boolean;
     foodPreference: 'Vegan' | 'Vegetarian' | 'Meat';
+    userGroup?: string;
     jobDescription?: string;
     companyName?: string;
-    awsExperience?: '< 1 year' | '1-3 years' | '3-5 years' | '5+ years';
+    awsExperience?:
+      | undefined
+      | '< 1 year'
+      | '1-3 years'
+      | '3-5 years'
+      | '5+ years';
   };
 };
 
@@ -19,6 +25,7 @@ type ParticipantInputElementsType = HTMLFormControlsCollection & {
   tShirtSize: HTMLSelectElement;
   eveningEventParticipation: HTMLSelectElement;
   foodPreference: HTMLSelectElement;
+  userGroup?: HTMLInputElement;
   jobDescription?: HTMLInputElement;
   companyName?: HTMLInputElement;
   awsExperience?: HTMLSelectElement;
