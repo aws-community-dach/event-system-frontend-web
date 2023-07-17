@@ -3,10 +3,10 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Button from './Button';
+import Spinner from './Spinner';
 import FormCheckbox from '@/components/FormCheckbox';
 import FormInput from '@/components/FormInput';
 import { ParticipantType } from '@/types/ParticipantType';
-import Spinner from './Spinner';
 
 type FormInputsProps = {
   participantData?: ParticipantType;

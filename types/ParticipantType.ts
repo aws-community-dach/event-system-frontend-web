@@ -4,17 +4,17 @@ export type ParticipantType = {
   email: string;
   customData: {
     tShirtSize:
-      | 'fxs'
-      | 'fs'
-      | 'fm'
-      | 'fl'
-      | 'xs'
-      | 's'
-      | 'm'
-      | 'l'
-      | 'xl'
-      | 'xxl'
-      | 'xxxl';
+    | 'fxs'
+    | 'fs'
+    | 'fm'
+    | 'fl'
+    | 'xs'
+    | 's'
+    | 'm'
+    | 'l'
+    | 'xl'
+    | 'xxl'
+    | 'xxxl';
     eveningEventParticipation: boolean;
     foodPreference: 'Vegan' | 'Vegetarian' | 'Meat';
     userGroup?: string;
