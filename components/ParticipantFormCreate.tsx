@@ -16,7 +16,7 @@ export default function ParticipantFormCreate({
   onSubmit?: () => void;
 }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isFailed, setIsFailed] = useState(false);
+  const [failedMessage, setFailedMessage] = useState('');
   const [data, setData] = useState<ParticipantType>({
     name: '',
     displayName: '',
@@ -37,10 +37,16 @@ export default function ParticipantFormCreate({
     try {
       await ParticipantService(eventId).add('', data);
     } catch (error) {
+      let msg = 'Something went wrong, please try again later.';
       if (error.name === 'ConditionalCheckFailedException') {
-        setIsFailed(true);
-        return;
+        msg =
+          'Registration failed. Please check your information and try again.';
       }
+      setFailedMessage(msg);
+      setTimeout(() => {
+        setFailedMessage('');
+      }, 3000);
+      return;
     }
 
     onSubmit();
@@ -51,13 +57,16 @@ export default function ParticipantFormCreate({
     }, 3000);
   };
 
+  if (failedMessage) {
+    return (
+      <div className='w-full py-6'>
+        <FormFailedFeedback>{failedMessage}</FormFailedFeedback>
+      </div>
+    );
+  }
+
   return (
     <div className='w-full'>
-      {isFailed && (
-        <div className=''>
-          <FormFailedFeedback>E-Mail already registered</FormFailedFeedback>
-        </div>
-      )}
       {isSubmitted ? (
         <FormSuccessFeedback>You are registered!</FormSuccessFeedback>
       ) : (
