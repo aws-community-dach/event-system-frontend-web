@@ -29,8 +29,8 @@ export default function Button({
   return (
     <button
       type={type}
-      className={`rounded-md px-4 py-2 my-2 transition duration ease select-none focus:outline-none focus:shadow-outline ${
-        processing ? 'opacity-25' : ''
+      className={`w-full rounded-md px-4 py-2 my-2 transition duration ease select-none focus:outline-none focus:shadow-outline ${
+        processing ? 'opacitiy-25' : ''
       } ${colorClass} ${className}`}
       onClick={onClick}
       disabled={processing}
