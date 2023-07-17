@@ -36,7 +36,7 @@ export default function ParticipantFormInputs({
         userGroup: '',
         jobDescription: '',
         companyName: '',
-        awsExperience: '< 1 year',
+        awsExperience: '',
       },
     },
   );
@@ -221,6 +221,7 @@ export default function ParticipantFormInputs({
               customData: {
                 ...data.customData,
                 awsExperience: e.target.value as
+                  | ''
                   | '< 1 year'
                   | '1-3 years'
                   | '3-5 years'
@@ -229,6 +230,7 @@ export default function ParticipantFormInputs({
             })
           }
         >
+          <option value=''>---</option>
           <option value='< 1 year'>{'< 1 year'}</option>
           <option value='1-3 years'>1-3 years</option>
           <option value='3-5 years'>3-5 years</option>

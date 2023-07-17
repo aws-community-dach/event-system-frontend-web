@@ -28,7 +28,7 @@ export default function ParticipantFormCreate({
       userGroup: '',
       jobDescription: '',
       companyName: '',
-      awsExperience: '< 1 year',
+      awsExperience: '',
     },
   });
 

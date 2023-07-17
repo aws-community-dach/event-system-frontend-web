@@ -3,18 +3,24 @@ export type ParticipantType = {
   displayName: string;
   email: string;
   customData: {
-    tShirtSize: 'fxs' | 'fs' | 'fm' | 'fl' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
+    tShirtSize:
+      | 'fxs'
+      | 'fs'
+      | 'fm'
+      | 'fl'
+      | 'xs'
+      | 's'
+      | 'm'
+      | 'l'
+      | 'xl'
+      | 'xxl'
+      | 'xxxl';
     eveningEventParticipation: boolean;
     foodPreference: 'Vegan' | 'Vegetarian' | 'Meat';
     userGroup?: string;
     jobDescription?: string;
     companyName?: string;
-    awsExperience?:
-      | undefined
-      | '< 1 year'
-      | '1-3 years'
-      | '3-5 years'
-      | '5+ years';
+    awsExperience?: '' | '< 1 year' | '1-3 years' | '3-5 years' | '5+ years';
   };
 };
 
