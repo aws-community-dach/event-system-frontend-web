@@ -37,7 +37,7 @@ export default function ParticipantFormCreate({
     try {
       await ParticipantService(eventId).add('', data);
     } catch (error) {
-      if (error.code === 'ERR_BAD_RESPONSE') {
+      if (error.name === 'ConditionalCheckFailedException') {
         setIsFailed(true);
         return;
       }
