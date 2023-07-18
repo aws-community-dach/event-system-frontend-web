@@ -36,10 +36,19 @@ const BaseFeedback = ({ title, children, color, Icon }: BaseFeedbackProps) => {
   );
 };
 
-export default function FormSuccessFeedback({ children }: FeedbackProps) {
+export function FormSuccessFeedback({ children }: FeedbackProps) {
   return (
     <div className='w-full text-center mb-6'>
       <CheckCircleIcon className='h-12 w-12 text-success mx-auto mt-4' />
+      {children}
+    </div>
+  );
+}
+
+export function FormFailedFeedback({ children }: FeedbackProps) {
+  return (
+    <div className='w-full text-center mb-6'>
+      <ExclamationCircleIcon className='h-12 w-12 text-danger mx-auto mt-4' />
       {children}
     </div>
   );

@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import FormSuccessFeedback from './Feedback';
+import { FormSuccessFeedback } from './Feedback';
 import ParticipantFormInputs from './ParticipantFormInputs';
 import { ParticipantService } from '@/service/events/ParticipantService';
 import { ParticipantType } from '@/types/ParticipantType';

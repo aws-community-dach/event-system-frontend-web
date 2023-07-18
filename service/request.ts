@@ -13,13 +13,29 @@ const request = async ({ ...options }) => {
 
   const onError = (error: AxiosError) => {
     if (error.code === 'ECONNREFUSED') {
-      return {
+      throw {
         customError: true,
         message: 'Connection refused. Please ensure the server is running.',
         status: 500,
         data: null,
       };
     }
+
+    if (error.code === 'ERR_BAD_RESPONSE') {
+      const response_error = JSON.parse(
+        (error.response?.data as string).split('context: ')[1],
+      );
+      const err = response_error?.err;
+      throw {
+        customError: true,
+        message: error.message,
+        fault: err.fault,
+        name: err.name,
+        status: err.$metadata?.httpStatusCode,
+        data: err,
+      };
+    }
+
     throw error;
   };
 
