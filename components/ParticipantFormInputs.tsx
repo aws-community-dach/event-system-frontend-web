@@ -280,10 +280,16 @@ export default function ParticipantFormInputs({
           )}
 
           {!isNewParticipant && (
-            <div className='flex gap-2'>
-              <Button type='submit'>Update Registration</Button>
-              <Button color='danger' onClick={handleDelete}>
+            <div className='flex md:flex-row flex-col gap-2 mt-2'>
+              <Button
+                className='md:w-fit'
+                color='danger'
+                onClick={handleDelete}
+              >
                 Delete Registration
+              </Button>
+              <Button className='md:w-fit' type='submit'>
+                Update Registration
               </Button>
             </div>
           )}
