@@ -6,7 +6,6 @@ import { FormSuccessFeedback } from './Feedback';
 import ParticipantFormInputs from './ParticipantFormInputs';
 import { ParticipantService } from '@/service/events/ParticipantService';
 import { ParticipantType } from '@/types/ParticipantType';
-import RegistrationQRCode from './RegistrationQRCode';
 
 export default function ParticipantFormUpdate({
   eventId,
@@ -66,10 +65,6 @@ export default function ParticipantFormUpdate({
 
   return (
     <div className={className}>
-      <RegistrationQRCode
-        eventId={eventId}
-        participantEmail={participantData.email}
-      />
       <ParticipantFormInputs
         participantData={data}
         handleDataChange={setData}
