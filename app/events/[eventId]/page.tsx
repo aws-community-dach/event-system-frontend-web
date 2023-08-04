@@ -1,13 +1,13 @@
 import { CalendarIcon, ClockIcon, MapIcon } from '@heroicons/react/24/outline';
 import { formatDate } from '@/app/utils';
 import Box from '@/components/Box';
+import CheckinButton from '@/components/CheckinButton';
 import { EventAgenda } from '@/components/EventAgenda';
 import EventFormModal from '@/components/EventFormModal';
 import { IconWithText } from '@/components/IconWithText';
 import ParticipantFormCreate from '@/components/ParticipantFormCreate';
 import { EventService } from '@/service/events/EventService';
 import { EventType } from '@/types/EventType';
-import CheckinButton from '@/components/CheckinButton';
 
 async function getEvent(eventId: string) {
   const res = await EventService.get(eventId);
