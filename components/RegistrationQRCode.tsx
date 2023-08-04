@@ -1,26 +1,28 @@
+'use client';
+
 import { useQRCode } from 'next-qrcode';
 
 export default function RegistrationQRCode({
   eventId,
-  participantEmail,
+  participantId,
 }: {
   eventId: string;
-  participantEmail: string;
+  participantId: string;
 }) {
   const { Canvas } = useQRCode();
   const seperator = '#';
 
   return (
     <Canvas
-      text={`${eventId}${seperator}${participantEmail}`}
+      text={`${eventId}${seperator}${participantId}`}
       options={{
         errorCorrectionLevel: 'M',
         margin: 3,
         scale: 4,
-        width: 200,
+        width: 400,
         color: {
-          dark: '#010599FF',
-          light: '#FFBF60FF',
+          dark: '#000',
+          light: '#fff',
         },
       }}
     />
