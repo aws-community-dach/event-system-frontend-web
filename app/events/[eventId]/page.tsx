@@ -7,6 +7,7 @@ import { IconWithText } from '@/components/IconWithText';
 import ParticipantFormCreate from '@/components/ParticipantFormCreate';
 import { EventService } from '@/service/events/EventService';
 import { EventType } from '@/types/EventType';
+import CheckinButton from '@/components/CheckinButton';
 
 async function getEvent(eventId: string) {
   const res = await EventService.get(eventId);
@@ -27,25 +28,27 @@ export default async function Page({
       <div className='mb-auto'>
         <div className='grid grid-flow-row-dense lg:grid-cols-3 gap-4'>
           <div className='col-span-2'>
-            <Box>
-              <div className='grid gap-2'>
-                <h1>{event.name}</h1>
-                <div className='mb-12 text-gray-500 flex flex-col space-y-2'>
-                  <IconWithText Icon={CalendarIcon}>{eventDate}</IconWithText>
-                  <IconWithText Icon={ClockIcon}>{eventTime}</IconWithText>
-                  <IconWithText Icon={MapIcon}>{event.location}</IconWithText>
-                </div>
-                <h2>About the event</h2>
-                <div>{event.description}</div>
-
-                {event.agenda && (
-                  <div>
-                    <h2>Agenda</h2>
-                    <EventAgenda agendaList={event.agenda} />
-                  </div>
-                )}
+            <div className='grid gap-2'>
+              <h1>{event.name}</h1>
+              <div className='mb-12 text-gray-500 flex flex-col space-y-2'>
+                <IconWithText Icon={CalendarIcon}>{eventDate}</IconWithText>
+                <IconWithText Icon={ClockIcon}>{eventTime}</IconWithText>
+                <IconWithText Icon={MapIcon}>{event.location}</IconWithText>
               </div>
-            </Box>
+              <CheckinButton
+                className='px-8 lg:px-0 lg:w-fit'
+                eventId={event.id}
+              />
+              <h2>About the event</h2>
+              <div>{event.description}</div>
+
+              {event.agenda && (
+                <div>
+                  <h2>Agenda</h2>
+                  <EventAgenda agendaList={event.agenda} />
+                </div>
+              )}
+            </div>
           </div>
 
           <div className='hidden lg:block self-start sticky top-2 col-span-1'>
