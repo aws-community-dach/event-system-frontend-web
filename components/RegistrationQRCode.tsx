@@ -19,7 +19,7 @@ export default function RegistrationQRCode({
         errorCorrectionLevel: 'M',
         margin: 3,
         scale: 4,
-        width: 400,
+        width: 350,
         color: {
           dark: '#000',
           light: '#fff',
