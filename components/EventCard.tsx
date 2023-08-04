@@ -1,10 +1,10 @@
 'use client';
 import Link from 'next/link';
 import Box from './Box';
+import CheckinButton from './CheckinButton';
 import { EventDetails } from './EventDetails';
 import EventFormModal from './EventFormModal';
 import { EventType } from '@/types/EventType';
-import CheckinButton from './CheckinButton';
 
 export default function EventCard({
   event,
