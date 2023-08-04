@@ -184,6 +184,7 @@ export default function ParticipantFormInputs({
           <FormInput
             type='text'
             label='User Group'
+            placeholder='Hamburg AWS User Group'
             value={data.customData.userGroup}
             onChange={(e) =>
               setData({
