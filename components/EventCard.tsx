@@ -4,6 +4,7 @@ import Box from './Box';
 import { EventDetails } from './EventDetails';
 import EventFormModal from './EventFormModal';
 import { EventType } from '@/types/EventType';
+import CheckinButton from './CheckinButton';
 
 export default function EventCard({
   event,
@@ -25,6 +26,7 @@ export default function EventCard({
       <div className='basis-1/3'>
         <EventDetails date={event.date} location={event.location} />
         <EventFormModal eventId={event.id} />
+        <CheckinButton eventId={event.id} />
       </div>
     </Box>
   );
