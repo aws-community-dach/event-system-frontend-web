@@ -67,7 +67,7 @@ export default function ParticipantFormInputs({
           <Spinner className='h-12 w-12' />
         </div>
       ) : (
-        <form className='w-full lg:space-y-6' onSubmit={onSubmit}>
+        <form className='w-full space-y-4' onSubmit={onSubmit}>
           <FormInput
             type='text'
             label='Name on badge'
