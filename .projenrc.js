@@ -20,6 +20,7 @@ const project = new web.NextJsTypeScriptProject({
     '@headlessui/react',
     '@heroicons/react',
     '@sentry/nextjs',
+    'next-qrcode',
   ],
   eslint: true,
   eslintOptions: {

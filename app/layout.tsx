@@ -18,7 +18,7 @@ export default async function RootLayout({
         <div className='flex flex-col min-h-screen'>
           <Nav session={session} />
           <main className='flex-grow'>
-            <div className='mx-auto max-w-7xl py-6 sm:px-6 lg:px-8'>
+            <div className='mx-auto max-w-7xl py-6 px-3 sm:px-6 lg:px-8'>
               {children}
             </div>
           </main>

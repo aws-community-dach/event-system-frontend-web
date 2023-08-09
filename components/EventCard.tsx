@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import Box from './Box';
+import CheckinButton from './CheckinButton';
 import { EventDetails } from './EventDetails';
 import EventFormModal from './EventFormModal';
 import { EventType } from '@/types/EventType';
@@ -25,6 +26,7 @@ export default function EventCard({
       <div className='basis-1/3'>
         <EventDetails date={event.date} location={event.location} />
         <EventFormModal eventId={event.id} />
+        <CheckinButton eventId={event.id} />
       </div>
     </Box>
   );
