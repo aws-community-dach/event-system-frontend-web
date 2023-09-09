@@ -55,6 +55,8 @@ export default async function Page({
           participantId={participant.email}
         />
       </div>
+      <h2>Your badge name</h2>
+      <div className='my-6 flex justify-center'>{participant.displayName}</div>
     </>
   );
 }
