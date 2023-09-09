@@ -48,6 +48,7 @@ export default async function Page({
 
   return (
     <>
+      <a href={`/events/${params.eventId}/participants/${params.participantId}/checkin?token=${token}`}>Go to Check-In</a><br/>
       <h1>Update your Registration</h1>
       <>
         <ParticipantFormUpdate
