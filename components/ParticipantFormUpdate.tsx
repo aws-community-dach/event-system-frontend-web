@@ -31,7 +31,10 @@ export default function ParticipantFormUpdate({
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    await ParticipantService(eventId).update(`${encodeURIComponent(participantData.email)}?token=${token}`, data);
+    await ParticipantService(eventId).update(
+      `${encodeURIComponent(participantData.email)}?token=${token}`,
+      data,
+    );
     setIsSubmitted(true);
     setTimeout(() => {
       setIsSubmitted(false);
@@ -40,7 +43,10 @@ export default function ParticipantFormUpdate({
   };
 
   const handleDelete = async () => {
-    await ParticipantService(eventId).delete(`${encodeURIComponent(participantData.email)}?token=${token}`, {});
+    await ParticipantService(eventId).delete(
+      `${encodeURIComponent(participantData.email)}?token=${token}`,
+      {},
+    );
 
     setIsDeleted(true);
     setTimeout(() => {
@@ -50,15 +56,11 @@ export default function ParticipantFormUpdate({
   };
 
   if (isDeleted) {
-    return (
-      <FormSuccessFeedback>Deletion successful!</FormSuccessFeedback>
-    );
+    return <FormSuccessFeedback>Deletion successful!</FormSuccessFeedback>;
   }
 
   if (isSubmitted) {
-    return (
-      <FormSuccessFeedback>Update successful!</FormSuccessFeedback>
-    );
+    return <FormSuccessFeedback>Update successful!</FormSuccessFeedback>;
   }
 
   return (

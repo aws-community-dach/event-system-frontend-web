@@ -67,7 +67,7 @@ export default function ParticipantFormInputs({
           <Spinner className='h-12 w-12' />
         </div>
       ) : (
-        <form className='w-full lg:space-y-6' onSubmit={onSubmit}>
+        <form className='w-full space-y-4' onSubmit={onSubmit}>
           <FormInput
             type='text'
             label='Name on badge'
@@ -184,6 +184,7 @@ export default function ParticipantFormInputs({
           <FormInput
             type='text'
             label='User Group'
+            placeholder='Hamburg AWS User Group'
             value={data.customData.userGroup}
             onChange={(e) =>
               setData({
@@ -280,10 +281,16 @@ export default function ParticipantFormInputs({
           )}
 
           {!isNewParticipant && (
-            <div className='flex gap-2'>
-              <Button type='submit'>Update Registration</Button>
-              <Button color='danger' onClick={handleDelete}>
+            <div className='flex md:flex-row flex-col gap-2 mt-2'>
+              <Button
+                className='md:w-fit'
+                color='danger'
+                onClick={handleDelete}
+              >
                 Delete Registration
+              </Button>
+              <Button className='md:w-fit' type='submit'>
+                Update Registration
               </Button>
             </div>
           )}
