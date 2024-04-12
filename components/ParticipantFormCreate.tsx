@@ -70,7 +70,6 @@ export default function ParticipantFormCreate({
 
     setIsSubmitted(true);
     setData(getInitialState());
-    event.currentTarget.reset();
 
     setTimeout(() => {
       setIsSubmitted(false);
