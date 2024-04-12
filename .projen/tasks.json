@@ -186,13 +186,13 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/react,@types/react-dom,eslint-import-resolver-typescript,eslint-plugin-import,projen,typescript,@headlessui/react,@heroicons/react,@next/font,@sentry/nextjs,autoprefixer,axios,next,next-auth,next-qrcode,postcss,react,react-dom,swr,tailwindcss"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/react,@types/react-dom,eslint-import-resolver-typescript,eslint-plugin-import,projen,typescript,@headlessui/react,@heroicons/react,@sentry/nextjs,autoprefixer,axios,next,next-auth,next-qrcode,postcss,react,react-dom,swr,tailwindcss"
         },
         {
           "exec": "npm install"
         },
         {
-          "exec": "npm update @types/node @types/react @types/react-dom @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint projen typescript @headlessui/react @heroicons/react @next/font @sentry/nextjs autoprefixer axios next next-auth next-qrcode postcss react react-dom swr tailwindcss"
+          "exec": "npm update @types/node @types/react @types/react-dom @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint projen typescript @headlessui/react @heroicons/react @sentry/nextjs autoprefixer axios next next-auth next-qrcode postcss react react-dom swr tailwindcss"
         },
         {
           "exec": "npx projen"
