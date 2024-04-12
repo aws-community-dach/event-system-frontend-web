@@ -34,7 +34,6 @@ jspm_packages/
 .vscode
 .DS_Store
 .sentryclirc
-!/.projenrc.js
 !/.github/workflows/build.yml
 !/.github/workflows/upgrade.yml
 !/.github/pull_request_template.md
@@ -48,3 +47,4 @@ jspm_packages/
 !/tailwind.config.json
 !/postcss.config.json
 /.next/
+!/.projenrc.js

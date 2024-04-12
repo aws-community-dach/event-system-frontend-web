@@ -32,6 +32,7 @@ const project = new web.NextJsTypeScriptProject({
       rootDir: '.',
       outDir: '.',
       jsx: 'react-jsx',
+      moduleResolution: 'node',
       baseUrl: '.',
       paths: {
         '@/*': ['./*'],
