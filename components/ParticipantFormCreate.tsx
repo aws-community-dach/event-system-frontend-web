@@ -42,7 +42,7 @@ export default function ParticipantFormCreate({
 
     try {
       await ParticipantService(eventId).add('', data);
-    } catch (error) {
+    } catch (error: any) {
       let msg = 'Something went wrong, please try again later.';
 
       switch (error.status) {
