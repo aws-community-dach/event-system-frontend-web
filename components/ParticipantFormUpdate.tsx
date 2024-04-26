@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { FormSuccessFeedback } from './Feedback';
 import ParticipantFormInputs from './ParticipantFormInputs';
 import { ParticipantService } from '@/service/events/ParticipantService';
-import { ParticipantDataType, ParticipantType } from '@/types/ParticipantType';
+import { ParticipantType, ParticipantDataType } from '@/types/ParticipantType';
 
 export default function ParticipantFormUpdate({
   eventId,
@@ -17,7 +17,7 @@ export default function ParticipantFormUpdate({
   participantData: ParticipantType;
 }) {
   const router = useRouter();
-  const [data, setData] = useState<ParticipantType>(participantData);
+  const [data, setData] = useState<ParticipantDataType>(participantData);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);
 
@@ -35,14 +35,6 @@ export default function ParticipantFormUpdate({
       setIsSubmitted(false);
       router.push(`/events/${eventId}`);
     }, 3000);
-  };
-
-  const handleDataChange: (
-    newData: ParticipantDataType | ParticipantType,
-  ) => void = (newData) => {
-    if ('id' in newData) {
-      setData(newData);
-    }
   };
 
   const handleDelete = async () => {
@@ -67,7 +59,7 @@ export default function ParticipantFormUpdate({
     <div className={className}>
       <ParticipantFormInputs
         participantData={data}
-        handleDataChange={handleDataChange}
+        handleDataChange={setData}
         handleSubmit={handleSubmit}
         handleDelete={handleDelete}
         eventId={eventId}
