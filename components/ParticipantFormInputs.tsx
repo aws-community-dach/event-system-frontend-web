@@ -6,12 +6,12 @@ import Button from './Button';
 import Spinner from './Spinner';
 import FormCheckbox from '@/components/FormCheckbox';
 import FormInput from '@/components/FormInput';
-import { ParticipantDataType } from '@/types/ParticipantType';
+import { ParticipantDataType, ParticipantType } from '@/types/ParticipantType';
 
 type FormInputsProps = {
   participantData?: ParticipantDataType;
   isNewParticipant?: boolean;
-  handleDataChange: (newData: ParticipantDataType) => void;
+  handleDataChange: (newData: ParticipantDataType | ParticipantType) => void;
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
   handleDelete?: () => void;
   eventId: string;
@@ -25,7 +25,7 @@ export default function ParticipantFormInputs({
   handleSubmit = async () => {},
   handleDelete = () => {},
 }: FormInputsProps) {
-  const [data, setData] = useState<ParticipantDataType>(
+  const [data, setData] = useState<ParticipantDataType | ParticipantType>(
     participantData || {
       name: '',
       displayName: '',
