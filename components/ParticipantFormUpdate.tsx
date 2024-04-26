@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { FormSuccessFeedback } from './Feedback';
 import ParticipantFormInputs from './ParticipantFormInputs';
 import { ParticipantService } from '@/service/events/ParticipantService';
-import { ParticipantType } from '@/types/ParticipantType';
+import { ParticipantDataType, ParticipantType } from '@/types/ParticipantType';
 
 export default function ParticipantFormUpdate({
   eventId,
@@ -17,7 +17,9 @@ export default function ParticipantFormUpdate({
   participantData: ParticipantType;
 }) {
   const router = useRouter();
-  const [data, setData] = useState<ParticipantType>(participantData);
+  const [data, setData] = useState<ParticipantType | ParticipantDataType>(
+    participantData,
+  );
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);
 
