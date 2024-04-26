@@ -10,15 +10,14 @@ export default function ParticipanCheckinForm({
 }: {
   params: { eventId: string };
 }) {
-  const [email, setEmail] = useState('');
-  const [token, setToken] = useState('');
+  const [participantId, setParticipantId] = useState('');
   const router = useRouter();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     router.push(
-      `/events/${params.eventId}/participants/${email}/checkin?token=${token}`,
+      `/events/${params.eventId}/participants/${participantId}/checkin`,
     );
   };
 
@@ -28,18 +27,10 @@ export default function ParticipanCheckinForm({
 
       <form className='w-full space-y-4' onSubmit={handleSubmit}>
         <FormInput
-          type='email'
-          label='E-Mail'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-
-        <FormInput
           type='text'
-          label='Token'
-          value={token}
-          onChange={(e) => setToken(e.target.value)}
+          label='Participant Id'
+          value={participantId}
+          onChange={(e) => setParticipantId(e.target.value)}
           required
         />
 
