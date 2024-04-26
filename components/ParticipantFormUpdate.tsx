@@ -17,9 +17,7 @@ export default function ParticipantFormUpdate({
   participantData: ParticipantType;
 }) {
   const router = useRouter();
-  const [data, setData] = useState<ParticipantType | ParticipantDataType>(
-    participantData,
-  );
+  const [data, setData] = useState<ParticipantType>(participantData);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);
 
@@ -37,6 +35,14 @@ export default function ParticipantFormUpdate({
       setIsSubmitted(false);
       router.push(`/events/${eventId}`);
     }, 3000);
+  };
+
+  const handleDataChange: (
+    newData: ParticipantDataType | ParticipantType,
+  ) => void = (newData) => {
+    if ('id' in newData) {
+      setData(newData);
+    }
   };
 
   const handleDelete = async () => {
@@ -61,7 +67,7 @@ export default function ParticipantFormUpdate({
     <div className={className}>
       <ParticipantFormInputs
         participantData={data}
-        handleDataChange={setData}
+        handleDataChange={handleDataChange}
         handleSubmit={handleSubmit}
         handleDelete={handleDelete}
         eventId={eventId}

@@ -11,7 +11,7 @@ import { ParticipantDataType, ParticipantType } from '@/types/ParticipantType';
 type FormInputsProps = {
   participantData?: ParticipantDataType;
   isNewParticipant?: boolean;
-  handleDataChange: (newData: ParticipantDataType | ParticipantType) => void;
+  handleDataChange: (newData: ParticipantType | ParticipantDataType) => void;
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
   handleDelete?: () => void;
   eventId: string;
