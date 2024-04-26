@@ -1,4 +1,5 @@
 export type ParticipantType = {
+  id: string;
   name: string;
   displayName: string;
   email: string;
