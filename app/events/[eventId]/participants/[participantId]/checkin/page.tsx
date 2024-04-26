@@ -52,7 +52,7 @@ export default async function Page({
       <div className='my-6 flex justify-center'>
         <RegistrationQRCode
           eventId={params.eventId}
-          participantId={participant.email}
+          participantId={participant.id}
         />
       </div>
       <h2>Your badge name</h2>
