@@ -1,4 +1,4 @@
-export type ParticipantType = {
+export type ParticipantDataType = {
   name: string;
   displayName: string;
   email: string;
@@ -22,6 +22,10 @@ export type ParticipantType = {
     companyName?: string;
     awsExperience?: '' | '< 1 year' | '1-3 years' | '3-5 years' | '5+ years';
   };
+};
+
+export type ParticipantType = ParticipantDataType & {
+  id: string;
 };
 
 type ParticipantInputElementsType = HTMLFormControlsCollection & {

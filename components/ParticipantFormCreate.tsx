@@ -4,10 +4,10 @@ import { useState } from 'react';
 import { FormFailedFeedback, FormSuccessFeedback } from './Feedback';
 import ParticipantFormInputs from './ParticipantFormInputs';
 import { ParticipantService } from '@/service/events/ParticipantService';
-import { ParticipantType } from '@/types/ParticipantType';
+import { ParticipantDataType } from '@/types/ParticipantType';
 
 // Function to get the initial state
-function getInitialState(): ParticipantType {
+function getInitialState(): ParticipantDataType {
   return {
     name: '',
     displayName: '',
@@ -35,14 +35,14 @@ export default function ParticipantFormCreate({
 }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [failedMessage, setFailedMessage] = useState('');
-  const [data, setData] = useState<ParticipantType>(getInitialState);
+  const [data, setData] = useState<ParticipantDataType>(getInitialState);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
       await ParticipantService(eventId).add('', data);
-    } catch (error) {
+    } catch (error: any) {
       let msg = 'Something went wrong, please try again later.';
 
       switch (error.status) {
@@ -70,7 +70,6 @@ export default function ParticipantFormCreate({
 
     setIsSubmitted(true);
     setData(getInitialState());
-    event.currentTarget.reset();
 
     setTimeout(() => {
       setIsSubmitted(false);

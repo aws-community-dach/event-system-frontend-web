@@ -3,11 +3,9 @@ import ParticipantFormUpdate from '@/components/ParticipantFormUpdate';
 import { ParticipantService } from '@/service/events/ParticipantService';
 import { ParticipantType } from '@/types/ParticipantType';
 
-async function getData(eventId: string, participantId: string, token: string) {
+async function getData(eventId: string, participantId: string) {
   try {
-    const res = await ParticipantService(eventId).get(
-      `${participantId}?token=${token}`,
-    );
+    const res = await ParticipantService(eventId).get(participantId);
     return res.data;
   } catch (error) {
     return null;
@@ -16,21 +14,12 @@ async function getData(eventId: string, participantId: string, token: string) {
 
 export default async function Page({
   params,
-  searchParams,
 }: {
   params: { eventId: string; participantId: string };
-  searchParams: { token: string };
 }) {
-  const token = searchParams.token;
-
-  if (!token) {
-    return <ErrorFeedback title='No Token'>No token provided</ErrorFeedback>;
-  }
-
   const participant: ParticipantType = await getData(
     params.eventId,
     params.participantId,
-    token,
   );
 
   if (participant === null) {
@@ -48,13 +37,17 @@ export default async function Page({
 
   return (
     <>
-      <a href={`/events/${params.eventId}/participants/${params.participantId}/checkin?token=${token}`}>Go to Check-In</a><br/>
+      <a
+        href={`/events/${params.eventId}/participants/${params.participantId}/checkin`}
+      >
+        Go to Check-In
+      </a>
+      <br />
       <h1>Update your Registration</h1>
       <>
         <ParticipantFormUpdate
           eventId={params.eventId}
           participantData={participant}
-          token={token}
         />
       </>
     </>

@@ -14,7 +14,6 @@ const project = new web.NextJsTypeScriptProject({
   gitignore: ['.env.local', '.vscode', '.DS_Store', '.sentryclirc'],
   deps: [
     'swr',
-    '@next/font',
     'next-auth',
     'axios',
     '@headlessui/react',
@@ -31,7 +30,8 @@ const project = new web.NextJsTypeScriptProject({
     compilerOptions: {
       rootDir: '.',
       outDir: '.',
-      jsx: 'react-jsx',
+      jsx: 'preserve',
+      moduleResolution: 'node',
       baseUrl: '.',
       paths: {
         '@/*': ['./*'],
