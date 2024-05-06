@@ -25,7 +25,7 @@ export default async function Page({
         <ErrorFeedback title='Event not found'>
           <p>Nothing found, please try again</p>
           <div className='mt-6'>
-            <a href={`/events`}>Back</a>
+            <a href='/events'>Back</a>
           </div>
         </ErrorFeedback>
       </>
