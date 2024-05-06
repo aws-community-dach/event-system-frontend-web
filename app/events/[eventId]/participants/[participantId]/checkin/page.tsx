@@ -1,11 +1,15 @@
+import { ErrorFeedback } from '@/components/Feedback';
 import RegistrationQRCode from '@/components/RegistrationQRCode';
 import { EventService } from '@/service/events/EventService';
 import { EventType } from '@/types/EventType';
 
 async function getEvent(eventId: string) {
-  const res = await EventService.get(eventId);
-
-  return res.data;
+  try {
+    const res = await EventService.get(eventId);
+    return res.data;
+  } catch (error) {
+    return null;
+  }
 }
 
 export default async function Page({
@@ -14,6 +18,19 @@ export default async function Page({
   params: { eventId: string; participantId: string };
 }) {
   const event: EventType = await getEvent(params.eventId);
+
+  if (event === null) {
+    return (
+      <>
+        <ErrorFeedback title='Event not found'>
+          <p>Nothing found, please try again</p>
+          <div className='mt-6'>
+            <a href={`/events`}>Back</a>
+          </div>
+        </ErrorFeedback>
+      </>
+    );
+  }
 
   return (
     <>
