@@ -12,7 +12,7 @@
       "dom.iterable",
       "esnext"
     ],
-    "module": "CommonJS",
+    "module": "esnext",
     "noEmitOnError": false,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
@@ -21,39 +21,39 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "resolveJsonModule": true,
-    "strict": false,
+    "strict": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "stripInternal": true,
     "target": "es5",
     "moduleResolution": "node",
     "isolatedModules": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "allowJs": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "incremental": true,
-    "rootDir": ".",
-    "outDir": ".",
-    "baseUrl": ".",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "paths": {
       "@/*": [
         "./*"
       ]
     },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    "rootDir": ".",
+    "outDir": ".",
+    "baseUrl": "."
   },
   "include": [
-    ".projenrc.js",
     "./**/*.ts",
     "test/**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    ".projenrc.js"
   ],
   "exclude": [
     "node_modules"

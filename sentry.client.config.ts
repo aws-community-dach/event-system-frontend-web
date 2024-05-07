@@ -19,7 +19,9 @@ Sentry.init({
   // in development and sample at a lower rate in production
   replaysSessionSampleRate: 1.0,
 
-  tracePropagationTargets: ['localhost', /^https:\/\/.*\.aws-community\.de/],
+  tracePropagationTargets: [
+    'localhost' /*, /^https:\/\/.*\.aws-community\.de/ */,
+  ],
   // You can remove this option if you're not planning to use the Sentry Session Replay feature:
   integrations: [
     new Sentry.Replay({
