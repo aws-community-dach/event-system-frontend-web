@@ -1,11 +1,11 @@
 import { ErrorFeedback } from '@/components/Feedback';
 import RegistrationQRCode from '@/components/RegistrationQRCode';
-import { ParticipantService } from '@/service/events/ParticipantService';
-import { ParticipantType } from '@/types/ParticipantType';
+import { EventService } from '@/service/events/EventService';
+import { EventType } from '@/types/EventType';
 
-async function getData(eventId: string, participantId: string) {
+async function getEvent(eventId: string) {
   try {
-    const res = await ParticipantService(eventId).get(participantId);
+    const res = await EventService.get({ id: eventId });
     return res.data;
   } catch (error) {
     return null;
@@ -17,18 +17,15 @@ export default async function Page({
 }: {
   params: { eventId: string; participantId: string };
 }) {
-  const participant: ParticipantType = await getData(
-    params.eventId,
-    params.participantId,
-  );
+  const event: EventType = await getEvent(params.eventId);
 
-  if (participant === null) {
+  if (event === null) {
     return (
       <>
-        <ErrorFeedback title='Participant not found'>
+        <ErrorFeedback title='Event not found'>
           <p>Nothing found, please try again</p>
           <div className='mt-6'>
-            <a href={`/events/${params.eventId}/participants/edit`}>Back</a>
+            <a href='/events'>Back</a>
           </div>
         </ErrorFeedback>
       </>
@@ -37,15 +34,15 @@ export default async function Page({
 
   return (
     <>
-      <h1>Your checkin code</h1>
+      <h3 className='text-center'>Your checkin code</h3>
+      <h2 className='flex justify-center'>{event.name}</h2>
       <div className='my-6 flex justify-center'>
         <RegistrationQRCode
           eventId={params.eventId}
-          participantId={participant.id}
+          participantId={params.participantId}
         />
       </div>
-      <h2>Your badge name</h2>
-      <div className='my-6 flex justify-center'>{participant.displayName}</div>
+      <div className='flex justify-center'>We wish you a happy event!</div>
     </>
   );
 }
