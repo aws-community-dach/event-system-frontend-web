@@ -1,47 +1,83 @@
+'use client';
+
+import Button from '@/components/Button';
 import { ErrorFeedback } from '@/components/Feedback';
 import ParticipantFormUpdate from '@/components/ParticipantFormUpdate';
 import { ParticipantService } from '@/service/events/ParticipantService';
-import { ParticipantType } from '@/types/ParticipantType';
+import {
+  defaultParticipantObject,
+  ParticipantType,
+} from '@/types/ParticipantType';
+import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
-async function getData(eventId: string, participantId: string) {
+async function getData(
+  eventId: string,
+  participantId: string,
+  participantEmail: string,
+) {
   try {
-    const res = await ParticipantService(eventId).get(participantId);
+    const res = await ParticipantService(eventId).get({
+      id: participantId,
+      params: { email: participantEmail },
+    });
     return res.data;
   } catch (error) {
     return null;
   }
 }
 
-export default async function Page({
+export default function Page({
   params,
 }: {
   params: { eventId: string; participantId: string };
 }) {
-  const participant: ParticipantType = await getData(
-    params.eventId,
-    params.participantId,
+  const searchParams = useSearchParams();
+  const email = searchParams.get('email');
+
+  const errorFeedback = (
+    <ErrorFeedback title='Ooops, nothing found!'>
+      <p>Please try again</p>
+      <div className='mt-6'>
+        <Link href={`/events/${params.eventId}/participants/edit`}>Back</Link>
+      </div>
+    </ErrorFeedback>
   );
 
+  if (email === null) {
+    return errorFeedback;
+  }
+
+  const [participant, setParticipant] = useState<ParticipantType>({
+    ...defaultParticipantObject,
+    id: params.participantId,
+    email: email,
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setParticipant(
+        await getData(params.eventId, params.participantId, email),
+      );
+    };
+
+    fetchData();
+  }, []);
+
   if (participant === null) {
-    return (
-      <>
-        <ErrorFeedback title='Participant not found'>
-          <p>Nothing found, please try again</p>
-          <div className='mt-6'>
-            <a href={`/events/${params.eventId}/participants/edit`}>Back</a>
-          </div>
-        </ErrorFeedback>
-      </>
-    );
+    return errorFeedback;
   }
 
   return (
     <>
-      <a
-        href={`/events/${params.eventId}/participants/${params.participantId}/checkin`}
-      >
-        Go to Check-In
-      </a>
+      <div className='flex items-center justify-end'>
+        <Link
+          href={`/events/${params.eventId}/participants/${params.participantId}/checkin`}
+        >
+          <Button type='button'>Go to Check-In</Button>
+        </Link>
+      </div>
       <br />
       <h1>Update your Registration</h1>
       <>
