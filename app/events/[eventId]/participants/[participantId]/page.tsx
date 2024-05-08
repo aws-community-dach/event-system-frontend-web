@@ -34,7 +34,7 @@ export default function Page({
   params: { eventId: string; participantId: string };
 }) {
   const searchParams = useSearchParams();
-  const email = searchParams.get('email');
+  const email = searchParams!.get('email');
 
   const errorFeedback = (
     <ErrorFeedback title='Ooops, nothing found!'>
