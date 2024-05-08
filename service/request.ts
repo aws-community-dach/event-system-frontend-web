@@ -12,9 +12,18 @@ const request = async ({ ...options }) => {
   const onSuccess = (response: AxiosResponse) => response;
 
   const onError = (error: AxiosError) => {
+    const customError = {
+      customError: true,
+      message: error.message,
+      status: error.response?.status || 500,
+      data: null,
+      fault: '',
+      name: '',
+    };
+
     if (error.code === 'ECONNREFUSED') {
       throw {
-        customError: true,
+        ...customError,
         message: 'Connection refused. Please ensure the server is running.',
         status: 500,
         data: null,
@@ -22,21 +31,30 @@ const request = async ({ ...options }) => {
     }
 
     if (error.code === 'ERR_BAD_RESPONSE') {
-      const response_error = JSON.parse(
-        (error.response?.data as string).split('context: ')[1],
-      );
-      const err = response_error?.err;
-      throw {
-        customError: true,
-        message: error.message,
-        fault: err.fault,
-        name: err.name,
-        status: err.$metadata?.httpStatusCode,
-        data: err,
-      };
+      const responseData = error.response?.data as string;
+
+      if (responseData.startsWith('{') || responseData.startsWith('[')) {
+        try {
+          const response_error = JSON.parse(responseData.split('context: ')[1]);
+          const err = response_error?.err;
+          customError.fault = err?.fault;
+          customError.name = err?.name;
+          customError.data = err;
+        } catch (parseError) {
+          throw {
+            ...customError,
+            message: responseData,
+          };
+        }
+      } else {
+        throw {
+          ...customError,
+          message: responseData,
+        };
+      }
     }
 
-    throw error;
+    throw customError;
   };
 
   return client(options).then(onSuccess).catch(onError);
