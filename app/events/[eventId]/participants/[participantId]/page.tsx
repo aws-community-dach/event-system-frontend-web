@@ -1,5 +1,8 @@
 'use client';
 
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import Button from '@/components/Button';
 import { ErrorFeedback } from '@/components/Feedback';
 import ParticipantFormUpdate from '@/components/ParticipantFormUpdate';
@@ -8,9 +11,6 @@ import {
   defaultParticipantObject,
   ParticipantType,
 } from '@/types/ParticipantType';
-import { useSearchParams } from 'next/navigation';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
 
 async function getData(
   eventId: string,
