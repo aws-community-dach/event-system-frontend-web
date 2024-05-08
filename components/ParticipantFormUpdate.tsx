@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { FormSuccessFeedback } from './Feedback';
+import { FormSuccessFeedback, FormFailedFeedback } from './Feedback';
 import ParticipantFormInputs from './ParticipantFormInputs';
 import { ParticipantService } from '@/service/events/ParticipantService';
 import { ParticipantType, ParticipantDataType } from '@/types/ParticipantType';
@@ -19,6 +19,7 @@ export default function ParticipantFormUpdate({
   const router = useRouter();
   const [data, setData] = useState<ParticipantDataType>(participantData);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isFailed, setIsFailed] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);
 
   useEffect(() => {
@@ -29,12 +30,27 @@ export default function ParticipantFormUpdate({
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    await ParticipantService(eventId).update(participantData.id, data);
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      router.push(`/events/${eventId}`);
-    }, 3000);
+    const path = `/events/${eventId}`;
+    const timeout = 3000;
+    try {
+      const res = await ParticipantService(eventId).update(
+        participantData.id,
+        data,
+      );
+      console.log(res);
+      setIsSubmitted(true);
+      await redirectAfterTimeout(timeout, path);
+    } catch (error) {
+      setIsFailed(true);
+      await redirectAfterTimeout(timeout, path);
+    }
+  };
+
+  const redirectAfterTimeout = async (timeout: number, path: string) => {
+    await new Promise((resolve) => setTimeout(resolve, timeout));
+    setIsFailed(false);
+    setIsSubmitted(false);
+    router.push(path);
   };
 
   const handleDelete = async () => {
@@ -53,6 +69,10 @@ export default function ParticipantFormUpdate({
 
   if (isSubmitted) {
     return <FormSuccessFeedback>Update successful!</FormSuccessFeedback>;
+  }
+
+  if (isFailed) {
+    return <FormFailedFeedback>Something went wrong here!</FormFailedFeedback>;
   }
 
   return (
