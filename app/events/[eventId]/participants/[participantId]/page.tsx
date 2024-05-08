@@ -62,7 +62,7 @@ export default function Page({
       );
     };
 
-    fetchData();
+    void fetchData();
   }, []);
 
   if (participant === null) {
