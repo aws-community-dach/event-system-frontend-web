@@ -12,7 +12,7 @@ export default function CheckinButton({
     <div className={className}>
       <Link className='text-link' href={`/events/${eventId}/checkin`}>
         <Button type='button' color='secondary'>
-          Checkin
+          Check In
         </Button>
       </Link>
     </div>
