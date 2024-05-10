@@ -57,7 +57,6 @@ export default function ParticipantFormUpdate({
 
     setIsDeleted(true);
     setTimeout(() => {
-      setIsDeleted(false);
       router.push(`/events/${eventId}`);
     }, 3000);
   };
