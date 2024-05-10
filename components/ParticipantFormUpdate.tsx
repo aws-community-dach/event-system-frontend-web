@@ -28,6 +28,12 @@ export default function ParticipantFormUpdate({
     }
   }, [participantData]);
 
+  const pushBackToEvent = () => {
+    setTimeout(() => {
+      router.push(`/events/${eventId}`);
+    }, 3000);
+  };
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -44,9 +50,7 @@ export default function ParticipantFormUpdate({
       setIsFailed(true);
     }
 
-    setTimeout(() => {
-      router.push(`/events/${eventId}`);
-    }, 3000);
+    pushBackToEvent();
   };
 
   const handleDelete = async () => {
@@ -56,9 +60,7 @@ export default function ParticipantFormUpdate({
     });
 
     setIsDeleted(true);
-    setTimeout(() => {
-      router.push(`/events/${eventId}`);
-    }, 3000);
+    pushBackToEvent();
   };
 
   if (isDeleted) {
