@@ -11,9 +11,7 @@ export default function CheckinButton({
   return (
     <div className={className}>
       <Link className='text-link' href={`/events/${eventId}/checkin`}>
-        <Button type='button' color='secondary'>
-          Check In
-        </Button>
+        <Button type='button'>Check In</Button>
       </Link>
     </div>
   );
