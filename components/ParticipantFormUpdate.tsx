@@ -30,27 +30,17 @@ export default function ParticipantFormUpdate({
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const path = `/events/${eventId}`;
-    const timeout = 3000;
+
     try {
-      const res = await ParticipantService(eventId).update(
-        participantData.id,
-        data,
-      );
-      console.log(res);
+      await ParticipantService(eventId).update(participantData.id, data);
       setIsSubmitted(true);
-      await redirectAfterTimeout(timeout, path);
     } catch (error) {
       setIsFailed(true);
-      await redirectAfterTimeout(timeout, path);
     }
-  };
 
-  const redirectAfterTimeout = async (timeout: number, path: string) => {
-    await new Promise((resolve) => setTimeout(resolve, timeout));
-    setIsFailed(false);
-    setIsSubmitted(false);
-    router.push(path);
+    setTimeout(() => {
+      router.push(`/events/${eventId}`);
+    }, 3000);
   };
 
   const handleDelete = async () => {
