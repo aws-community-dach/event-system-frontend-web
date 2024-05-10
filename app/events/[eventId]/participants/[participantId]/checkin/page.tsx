@@ -1,7 +1,14 @@
+'use client';
 import { ErrorFeedback } from '@/components/Feedback';
 import RegistrationQRCode from '@/components/RegistrationQRCode';
+import Spinner from '@/components/Spinner';
 import { EventService } from '@/service/events/EventService';
+import { ParticipantService } from '@/service/events/ParticipantService';
 import { EventType } from '@/types/EventType';
+import { ParticipantType } from '@/types/ParticipantType';
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 async function getEvent(eventId: string) {
   try {
@@ -12,24 +19,70 @@ async function getEvent(eventId: string) {
   }
 }
 
-export default async function Page({
+async function getParticipant(
+  eventId: string,
+  participantId: string,
+  participantEmail: string,
+) {
+  try {
+    const res = await ParticipantService(eventId).get({
+      id: participantId,
+      params: { email: participantEmail },
+    });
+    return res.data;
+  } catch (error) {
+    return null;
+  }
+}
+
+export default function Page({
   params,
 }: {
   params: { eventId: string; participantId: string };
 }) {
-  const event: EventType = await getEvent(params.eventId);
+  const [isLoading, setIsLoading] = useState(true);
+  const searchParams = useSearchParams();
+  const email = searchParams!.get('email');
 
-  if (event === null) {
+  const errorFeedback = (
+    <ErrorFeedback title='Ooops, nothing found'>
+      <p>Please try again</p>
+      <div className='mt-6'>
+        <Link href={`/events/${params.eventId}/participants/edit`}>Back</Link>
+      </div>
+    </ErrorFeedback>
+  );
+
+  if (email === null) {
+    return errorFeedback;
+  }
+
+  const [event, setEvent] = useState<EventType | null>(null);
+  const [participant, setParticipant] = useState<ParticipantType | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setParticipant(
+        await getParticipant(params.eventId, params.participantId, email),
+      );
+
+      setEvent(await getEvent(params.eventId));
+      setIsLoading(false);
+    };
+
+    void fetchData();
+  }, []);
+
+  if (isLoading) {
     return (
-      <>
-        <ErrorFeedback title='Event not found'>
-          <p>Nothing found, please try again</p>
-          <div className='mt-6'>
-            <a href='/events'>Back</a>
-          </div>
-        </ErrorFeedback>
-      </>
+      <div className='flex items-center justify-center'>
+        <Spinner />
+      </div>
     );
+  }
+
+  if (event === null || participant === null) {
+    return errorFeedback;
   }
 
   return (
@@ -37,10 +90,7 @@ export default async function Page({
       <h3 className='text-center'>Your checkin code</h3>
       <h2 className='flex justify-center'>{event.name}</h2>
       <div className='my-6 flex justify-center'>
-        <RegistrationQRCode
-          eventId={params.eventId}
-          participantId={params.participantId}
-        />
+        <RegistrationQRCode eventId={event.id} participantId={participant.id} />
       </div>
       <div className='flex justify-center'>We wish you a happy event!</div>
     </>
