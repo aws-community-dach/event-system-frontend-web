@@ -73,9 +73,12 @@ export default function Page({
     <>
       <div className='flex items-center justify-end'>
         <Link
-          href={`/events/${params.eventId}/participants/${params.participantId}/checkin`}
+          href={{
+            pathname: `/events/${params.eventId}/participants/${params.participantId}/checkin`,
+            query: { email: participant.email },
+          }}
         >
-          <Button type='button'>Go to Check-In</Button>
+          <Button type='button'>Check In</Button>
         </Link>
       </div>
       <br />
