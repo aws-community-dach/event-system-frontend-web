@@ -62,7 +62,11 @@ export default function ParticipantFormUpdate({
   }
 
   if (isFailed) {
-    return <FormFailedFeedback>Something went wrong here!</FormFailedFeedback>;
+    return (
+      <FormFailedFeedback>
+        Something went wrong here! Please try again later again.
+      </FormFailedFeedback>
+    );
   }
 
   return (
