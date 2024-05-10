@@ -1,4 +1,7 @@
 'use client';
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { ErrorFeedback } from '@/components/Feedback';
 import RegistrationQRCode from '@/components/RegistrationQRCode';
 import Spinner from '@/components/Spinner';
@@ -6,9 +9,6 @@ import { EventService } from '@/service/events/EventService';
 import { ParticipantService } from '@/service/events/ParticipantService';
 import { EventType } from '@/types/EventType';
 import { ParticipantType } from '@/types/ParticipantType';
-import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
 async function getEvent(eventId: string) {
   try {
