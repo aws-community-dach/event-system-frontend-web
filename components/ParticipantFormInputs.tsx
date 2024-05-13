@@ -6,7 +6,11 @@ import Button from './Button';
 import Spinner from './Spinner';
 import FormCheckbox from '@/components/FormCheckbox';
 import FormInput from '@/components/FormInput';
-import { ParticipantDataType, ParticipantType } from '@/types/ParticipantType';
+import {
+  defaultParticipantDataObject,
+  ParticipantDataType,
+  ParticipantType,
+} from '@/types/ParticipantType';
 
 type FormInputsProps = {
   participantData?: ParticipantDataType;
@@ -26,20 +30,7 @@ export default function ParticipantFormInputs({
   handleDelete = () => {},
 }: FormInputsProps) {
   const [data, setData] = useState<ParticipantDataType | ParticipantType>(
-    participantData || {
-      name: '',
-      displayName: '',
-      email: '',
-      customData: {
-        tShirtSize: 'l',
-        eveningEventParticipation: false,
-        foodPreference: 'Meat',
-        userGroup: '',
-        jobDescription: '',
-        companyName: '',
-        awsExperience: '',
-      },
-    },
+    participantData || defaultParticipantDataObject,
   );
 
   const [isSubmitting, setIsSubmitting] = useState(false);

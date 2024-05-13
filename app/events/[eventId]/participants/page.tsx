@@ -2,9 +2,12 @@ import { ParticipantService } from '@/service/events/ParticipantService';
 import { ParticipantType } from '@/types/ParticipantType';
 
 async function getData(eventId: string) {
-  const res = await ParticipantService(eventId).getAll();
-
-  return res.data;
+  try {
+    const res = await ParticipantService(eventId).getAll();
+    return res.data;
+  } catch (error) {
+    return null;
+  }
 }
 
 export default async function Page({
@@ -19,7 +22,7 @@ export default async function Page({
       {/* {participantList?.map((participant) => (
         <div key={participant.id}>{participant.id}</div>
       ))} */}
-      ಠ_ಠ
+      <h1 className='text-center'>ಠ_ಠ</h1>
     </>
   );
 }

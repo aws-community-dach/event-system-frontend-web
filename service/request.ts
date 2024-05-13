@@ -2,7 +2,17 @@ import axios, { AxiosError, AxiosResponse } from 'axios';
 
 const client = axios.create({ baseURL: process.env.NEXT_PUBLIC_API_BASE_URL });
 
-const request = async ({ ...options }) => {
+const request = async ({
+  url,
+  data,
+  method,
+  params,
+}: {
+  url: string;
+  data?: object;
+  method?: string;
+  params?: object;
+}) => {
   let withCredentials = false;
 
   if (process.env.NEXT_PUBLIC_APP_ENV === 'production') {
@@ -57,27 +67,81 @@ const request = async ({ ...options }) => {
     throw customError;
   };
 
-  return client(options).then(onSuccess).catch(onError);
+  return client({ url, data, method, params }).then(onSuccess).catch(onError);
 };
 
-const mutationRequest = (endpoint: string, data: object, method: string) => {
-  return request({ url: endpoint, data: data, method: method });
+const mutationRequest = ({
+  endpoint,
+  data,
+  method,
+  params,
+}: {
+  endpoint: string;
+  data: object;
+  method?: string;
+  params?: object;
+}) => {
+  return request({
+    url: endpoint,
+    data: data,
+    method: method,
+    params: params,
+  });
 };
 
 export default {
-  get: (endpoint: string, parameter: object = {}) => {
-    return request({ url: endpoint, params: { ...parameter } });
+  get: ({ endpoint, params = {} }: { endpoint: string; params?: object }) => {
+    return request({ url: endpoint, params: { ...params } });
   },
 
-  post: (endpoint: string, data: object) => {
-    return mutationRequest(endpoint, data, 'post');
+  post: ({
+    endpoint,
+    data,
+    params = {},
+  }: {
+    endpoint: string;
+    data: object;
+    params?: object;
+  }) => {
+    return mutationRequest({
+      endpoint: endpoint,
+      data: data,
+      method: 'post',
+      params: { ...params },
+    });
   },
 
-  update: (endpoint: string, data: object) => {
-    return mutationRequest(endpoint, data, 'put');
+  update: ({
+    endpoint,
+    data,
+    params = {},
+  }: {
+    endpoint: string;
+    data: object;
+    params?: object;
+  }) => {
+    return mutationRequest({
+      endpoint: endpoint,
+      data: data,
+      method: 'put',
+      params: { ...params },
+    });
   },
 
-  delete: (endpoint: string, data: object) => {
-    return mutationRequest(endpoint, data, 'delete');
+  delete: ({
+    endpoint,
+    data,
+    params = {},
+  }: {
+    endpoint: string;
+    data: object;
+    params?: object;
+  }) => {
+    return mutationRequest({
+      endpoint: endpoint,
+      data: data,
+      method: 'delete',
+      params: { ...params },
+    });
   },
 };

@@ -1,29 +1,51 @@
 import request from './request';
 
-type idType = Number | string;
+export type idType = Number | string;
+
+export type OperationParams = {
+  query?: { [key: string]: string | number };
+};
+
+export type EntityOperationParams = {
+  id: idType;
+  data: object;
+  params?: OperationParams;
+};
 
 export const BaseService = (endpoint: string) => {
   const objectURL = (id: idType) => `${endpoint}/${id}`;
 
   return {
-    getAll: (parameter: object = {}) => {
-      return request.get(endpoint, parameter);
+    getAll: (params: object = {}) => {
+      return request.get({ endpoint: endpoint, params: params });
     },
 
-    get: (id: idType, parameter: object = {}) => {
-      return request.get(objectURL(id), parameter);
+    get: ({ id, params }: { id: idType; params?: object }) => {
+      return request.get({ endpoint: objectURL(id), params: params });
     },
 
-    add: (id: idType, data: object) => {
-      return request.post(objectURL(id), data);
+    add: ({ id, data, params }: EntityOperationParams) => {
+      return request.post({
+        endpoint: objectURL(id),
+        data: data,
+        params: params,
+      });
     },
 
-    update: (id: idType, data: object) => {
-      return request.update(objectURL(id), data);
+    update: ({ id, data, params }: EntityOperationParams) => {
+      return request.update({
+        endpoint: objectURL(id),
+        data: data,
+        params: params,
+      });
     },
 
-    delete: (id: idType, data: object) => {
-      return request.delete(objectURL(id), data);
+    delete: ({ id, data, params }: EntityOperationParams) => {
+      return request.delete({
+        endpoint: objectURL(id),
+        data: data,
+        params: params,
+      });
     },
   };
 };
