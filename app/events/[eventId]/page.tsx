@@ -5,7 +5,7 @@ import CheckinButton from '@/components/CheckinButton';
 import { EventAgenda } from '@/components/EventAgenda';
 import EventFormModal from '@/components/EventFormModal';
 import { IconWithText } from '@/components/IconWithText';
-import ParticipantFormCreate from '@/components/ParticipantFormCreate';
+// import ParticipantFormCreate from '@/components/ParticipantFormCreate';
 import { EventService } from '@/service/events/EventService';
 import { EventType } from '@/types/EventType';
 
