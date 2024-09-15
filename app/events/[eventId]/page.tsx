@@ -53,10 +53,11 @@ export default async function Page({
 
           <div className='hidden lg:block self-start sticky top-2 col-span-1'>
             <Box className='border drop-shadow'>
-              <ParticipantFormCreate
+              Sold Out
+              {/* <ParticipantFormCreate
                 eventId={params.eventId}
                 className='w-full'
-              />
+              /> */}
             </Box>
           </div>
         </div>
