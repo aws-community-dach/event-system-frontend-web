@@ -5,7 +5,7 @@ import CheckinButton from '@/components/CheckinButton';
 import { EventAgenda } from '@/components/EventAgenda';
 import EventFormModal from '@/components/EventFormModal';
 import { IconWithText } from '@/components/IconWithText';
-import ParticipantFormCreate from '@/components/ParticipantFormCreate';
+// import ParticipantFormCreate from '@/components/ParticipantFormCreate';
 import { EventService } from '@/service/events/EventService';
 import { EventType } from '@/types/EventType';
 
@@ -53,10 +53,11 @@ export default async function Page({
 
           <div className='hidden lg:block self-start sticky top-2 col-span-1'>
             <Box className='border drop-shadow'>
-              <ParticipantFormCreate
+              Sold Out
+              {/* <ParticipantFormCreate
                 eventId={params.eventId}
                 className='w-full'
-              />
+              /> */}
             </Box>
           </div>
         </div>

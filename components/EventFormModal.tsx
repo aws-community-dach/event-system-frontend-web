@@ -22,8 +22,8 @@ export default function EventFormModal({ eventId }: { eventId: string }) {
 
   return (
     <>
-      <Button className='w-full' onClick={() => setOpen(true)}>
-        Register
+      <Button className='w-full' /*onClick={() => setOpen(true)}*/>
+        Sold Out
       </Button>
 
       <Transition.Root show={open} as={Fragment}>
