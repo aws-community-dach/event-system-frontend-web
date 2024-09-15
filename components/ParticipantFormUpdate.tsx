@@ -28,29 +28,39 @@ export default function ParticipantFormUpdate({
     }
   }, [participantData]);
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    try {
-      await ParticipantService(eventId).update(participantData.id, data);
-      setIsSubmitted(true);
-    } catch (error) {
-      setIsFailed(true);
-    }
-
+  const pushBackToEvent = () => {
     setTimeout(() => {
       router.push(`/events/${eventId}`);
     }, 3000);
   };
 
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    try {
+      await ParticipantService(eventId).update({
+        id: participantData.id,
+        data: data,
+        params: {
+          email: participantData.email,
+        },
+      });
+      setIsSubmitted(true);
+    } catch (error) {
+      setIsFailed(true);
+    }
+
+    pushBackToEvent();
+  };
+
   const handleDelete = async () => {
-    await ParticipantService(eventId).delete(participantData.id, {});
+    await ParticipantService(eventId).delete({
+      id: participantData.id,
+      params: { email: participantData.email },
+    });
 
     setIsDeleted(true);
-    setTimeout(() => {
-      setIsDeleted(false);
-      router.push(`/events/${eventId}`);
-    }, 3000);
+    pushBackToEvent();
   };
 
   if (isDeleted) {

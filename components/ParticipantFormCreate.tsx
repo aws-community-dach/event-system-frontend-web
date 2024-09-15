@@ -4,25 +4,10 @@ import { useState } from 'react';
 import { FormFailedFeedback, FormSuccessFeedback } from './Feedback';
 import ParticipantFormInputs from './ParticipantFormInputs';
 import { ParticipantService } from '@/service/events/ParticipantService';
-import { ParticipantDataType } from '@/types/ParticipantType';
-
-// Function to get the initial state
-function getInitialState(): ParticipantDataType {
-  return {
-    name: '',
-    displayName: '',
-    email: '',
-    customData: {
-      tShirtSize: 'l',
-      eveningEventParticipation: false,
-      foodPreference: 'Meat',
-      userGroup: '',
-      jobDescription: '',
-      companyName: '',
-      awsExperience: '',
-    },
-  };
-}
+import {
+  defaultParticipantDataObject,
+  ParticipantDataType,
+} from '@/types/ParticipantType';
 
 export default function ParticipantFormCreate({
   eventId,
@@ -35,13 +20,15 @@ export default function ParticipantFormCreate({
 }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [failedMessage, setFailedMessage] = useState('');
-  const [data, setData] = useState<ParticipantDataType>(getInitialState);
+  const [data, setData] = useState<ParticipantDataType>(
+    defaultParticipantDataObject,
+  );
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
-      await ParticipantService(eventId).add('', data);
+      await ParticipantService(eventId).add({ id: '', data: data });
     } catch (error: any) {
       let msg = 'Something went wrong, please try again later.';
 
@@ -69,7 +56,7 @@ export default function ParticipantFormCreate({
     onSubmit();
 
     setIsSubmitted(true);
-    setData(getInitialState());
+    setData(defaultParticipantDataObject);
 
     setTimeout(() => {
       setIsSubmitted(false);

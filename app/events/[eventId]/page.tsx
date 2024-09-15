@@ -10,7 +10,7 @@ import { EventService } from '@/service/events/EventService';
 import { EventType } from '@/types/EventType';
 
 async function getEvent(eventId: string) {
-  const res = await EventService.get(eventId);
+  const res = await EventService.get({ id: eventId });
 
   return res.data;
 }

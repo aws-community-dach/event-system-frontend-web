@@ -28,6 +28,26 @@ export type ParticipantType = ParticipantDataType & {
   id: string;
 };
 
+export const defaultParticipantDataObject: ParticipantDataType = {
+  name: '',
+  displayName: '',
+  email: '',
+  customData: {
+    tShirtSize: 'l',
+    eveningEventParticipation: false,
+    foodPreference: 'Meat',
+    userGroup: '',
+    jobDescription: '',
+    companyName: '',
+    awsExperience: '',
+  },
+};
+
+export const defaultParticipantObject: ParticipantType = {
+  ...defaultParticipantDataObject,
+  id: '',
+};
+
 type ParticipantInputElementsType = HTMLFormControlsCollection & {
   name: HTMLInputElement;
   displayName: HTMLInputElement;
